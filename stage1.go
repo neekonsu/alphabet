@@ -1,18 +1,24 @@
-package ABC_scripts
+package abcscripts
 
 import (
 	"flag"
 	"fmt"
+	"os"
 	"os/exec"
 )
 
-func main() {
-	INPUTBAM := flag.String("jsonPath", "./res", "Path to directory storing JSON metadata files")
-	OUTPUTMACS2 := flag.String("agreementPath", "./agreementAccessions.csv", "Path to agreement accessions csv")
-	OUTPUTDIRECTORY := flag.String("outputAccessionsPath", "./accessions.csv", "Path to output accessions csv file")
-	stage1 = exec.Command("./stage1.sh", INPUTBAM, OUTPUTMACS2, OUTPUTDIRECTORY)
-	_, err = stage1.Output()
-	if err != nil {
+// StageOne function runs stage1 of procedure described in README.md
+func StageOne() {
+	INPUTBAM := flag.String("INPUTBAM", "./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam", "Path to input DNase-Seq or ATAC-Seq Bam file")
+	OUTPUTMACS2 := flag.String("OUTPUTMACS2", "./wgEncodeUwDnaseK562AlnRep1.chr22.macs2", "Path to MACS2 output file")
+	OUTPUTDIRECTORY := flag.String("OUTPUTDIRECTORY", "./example_chr22/ABC_output/Peaks/", "Path to general MACS2 output directory")
+	stage1 := &exec.Cmd{
+		Path:   "./stage1.sh",
+		Args:   []string{*INPUTBAM, *OUTPUTMACS2, *OUTPUTDIRECTORY},
+		Stdout: os.Stdout,
+		Stderr: os.Stdout,
+	}
+	if err := stage1.Run(); err != nil {
 		fmt.Println(err)
 	}
 }

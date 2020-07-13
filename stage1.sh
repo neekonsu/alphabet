@@ -1,8 +1,10 @@
 #!/bin/sh
 
-INPUTBAM=$1
-OUTPUTMACS2=$2
-OUTPUTDIRECTORY=$3
+INPUTBAM=$0
+OUTPUTMACS2=$1
+OUTPUTDIRECTORY=$2
+
+echo "0: $0, 1: $1, 2: $2" >&2
 
 macs2 callpeak \
             -t $INPUTBAM \

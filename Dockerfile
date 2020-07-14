@@ -6,7 +6,6 @@ RUN apt update -y
 
 WORKDIR /usr/src/app/
 
-COPY . .
 RUN rm Dockerfile
 RUN apt install -y -q $(cat dependencies.conf) --fix-missing
 

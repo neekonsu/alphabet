@@ -12,10 +12,10 @@ RUN apt update -y
 RUN apt install -y -q $(cat dependencies.conf) --fix-missing
 
 RUN git clone https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
-RUN git clone  https://github.com/neekonsu/ABC_scripts
+RUN git clone  https://github.com/neekonsu/alphabet
 RUN git clone https://github.com/neekonsu/juicer
 RUN pip install --user pyranges numpy scipy pandas
 
-RUN chmod +x ./ABC_scripts/*.sh
+RUN chmod +x ./alphabet/*.sh
 
 EXPOSE 5000

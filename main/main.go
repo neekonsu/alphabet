@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	abcscripts "github.com/neekonsu/ABC_scripts"
+	alphabet "github.com/neekonsu/alphabet"
 )
 
 // Question represents a single question in user prompt
@@ -44,7 +44,7 @@ func main() {
 			c1 <- input
 		}()
 		select {
-		case c1:
+		case <-c1:
 			if stage1Args[i] = input; input == "default" {
 				stage1Args[i] = question.Default
 			} else if input == "" {
@@ -61,9 +61,9 @@ func main() {
 		fmt.Println("All arguments set, waiting 3 seconds before starting stage 1 ...")
 		time.Sleep(2 * time.Second)
 		fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")
-		abcscripts.StageOne(stage1Args[0], stage1Args[1], stage1Args[2], stage1Args[3], stage1Args[4])
-		abcscripts.StageTwo()
-		abcscripts.StageThree()
+		alphabet.StageOne(stage1Args[0], stage1Args[1], stage1Args[2], stage1Args[3], stage1Args[4])
+		alphabet.StageTwo()
+		alphabet.StageThree()
 	}
 
 }

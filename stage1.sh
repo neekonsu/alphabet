@@ -1,6 +1,9 @@
 #!/bin/sh
 
 # Base filename for the input bam file it MACS2 (sliced extension)
+# TODO: isolate filename from directory; right now this is the whole directory.
+# When used in conjunction with other variables, we get impossible addresses;
+# `Error: The requested file (./example_chr22/ABC_output/Peaks/./stage.macs2_peaks.narrowPeak) could not be opened.`
 INPUT="${0::-4}"
 # Input bam file for MACS2
 INPUTBAM=$0

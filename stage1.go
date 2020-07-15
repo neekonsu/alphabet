@@ -1,4 +1,4 @@
-package abcscripts
+package alphabet
 
 import (
 	"fmt"

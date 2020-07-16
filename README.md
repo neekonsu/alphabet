@@ -21,7 +21,8 @@
 ## With Docker Container:
         |$⟩ docker pull neekonsu/abc_pipeline:latest
         |$⟩ docker container run -it --rm --gpus all --name Nickname neekonsu/abc_pipeline:latest
-## 1. Define candidate enhancer regions
+## Pipeline Procedure and Notes:
+### 1. Define candidate enhancer regions
     a. Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
     b. Process ^peaks^ using 'makeCandidateRegions.py'
         1. Input 'narrowPeak' file output by ^MACS2^ to 'makeCandidateRegions.py'; this will execute the following:
@@ -54,7 +55,7 @@
             --peakExtendFromSummit 250 \
             --nStrongestPeaks 3000`
         3. Check "### Step 1. Define candidate elements" in README.md of 'ABC-Enhancer-Gene-Prediction' for commentary on methods
-## 2. Quantify enhancer activity
+### 2. Quantify enhancer activity
     a. Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
         `
         python src/run.neighborhoods.py \
@@ -71,7 +72,7 @@
     b. ^'run.neighborhoods.py'^ returns 2 files:
         1. **EnhancerList.txt**: Candidate enhancer regions with Dnase-seq and H3K27ac ChIP-seq read counts
         2. **GeneList.txt**: Dnase-seq and H3K27ac ChIP-seq read counts on gene bodies and gene promoter regions
-## 3. Compute ABC Scores
+### 3. Compute ABC Scores
     a. Input all ouput of ^'run.neighborhoods.py'^ to 'predict.py'; following is example command:
         `
         python src/predict.py \

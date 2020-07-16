@@ -4,26 +4,14 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"strings"
 )
 
 // StageTwo function runs stage2 of procedure described in README.md
-func StageTwo(INPUTBAM,
-	OUTPUTMACS2,
-	OUTPUTDIRECTORY,
-	REFERENCECHROMOSOMEDIRECTORY,
-	ABCREPOSITORYPYTHONDIRECTORY,
-	INPUTBAMFORNEIGHBORHOODS string) {
-	input := []string{INPUTBAM, OUTPUTMACS2, OUTPUTDIRECTORY, REFERENCECHROMOSOMEDIRECTORY, ABCREPOSITORYPYTHONDIRECTORY}
-	for i := range input {
-		if strings.HasSuffix(input[i], "/") {
-			input[i] = input[i][:len(input)-1]
-		}
-	}
+func StageTwo(args *[]string) {
 	// Spawn shell command for `stage1.sh` script
 	stage1 := &exec.Cmd{
 		Path:   "./stage2.sh",
-		Args:   []string{INPUTBAM, OUTPUTMACS2, OUTPUTDIRECTORY, REFERENCECHROMOSOMEDIRECTORY, ABCREPOSITORYPYTHONDIRECTORY},
+		Args:   (*args),
 		Stdout: os.Stdout,
 		Stderr: os.Stdout,
 	}

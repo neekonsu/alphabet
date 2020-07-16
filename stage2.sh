@@ -7,32 +7,41 @@
 INPUTFILENAME=$(basename "${0%.*}")
 INPUTDIRECTORY="dirname $0"
 # Input bam file for MACS2
+# ex: (./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam)
 INPUTBAM=$0
-# Output filename for MACS2 file
-OUTPUTMACS2=$1
 # Output directory for MACS2, input for bedtools
-OUTPUTDIRECTORY=$2
-# Directory of reference chromosome, located inside ABC git repo (example_chr22/reference/chr22)
-REFERENCECHROMOSOMEDIRECTORY=$3
-# Directory of all python scripts/sourcecode in ABC git repo (src/*.py)
-ABCREPOSITORYPYTHONDIRECTORY=$4
+# ex: (./example_chr22/ABC_output)
+OUTPUTDIRECTORY=$1
+# Directory of reference chromosome, located inside ABC git repo
+# ex: (./example_chr22/reference/chr22)
+REFERENCECHROMOSOMEDIRECTORY=$2
+# Directory of all python scripts/sourcecode in ABC git repo
+# ex: (./src)
+ABCREPOSITORYSRCDIRECTORY=$3
+# Filename of reference sequence curated w/o file extension
+# ex: (RefSeqCurated.170308.bed.CollapsedGeneBounds)
+REFERENCESEQUENCEBED=$4
 # Filename input BAM file for run.neighborhoods.py
-INPUTBAMFORNEIGHBORHOODS=$5
-# Filename of reference sequence curated (BED)
-REFERENCESEQUENCEBED=$6
+# ex: (ENCFF384ZZM.chr22.bam)
+INPUTBAMFORNEIGHBORHOODS=$6
 # Filename of Expression Table txt file
+# ex: ()
 EXPRESSIONTABLETXT=$7
 # Filename of Ubiquitously Expressed Genes txt file
+# ex: ()
 UBIQUITOUSLYEXPRESSEDGENESTXT=$8
+# Celltype identifier (string)
+# ex: ()
+CELLTYPEIDENTIFIER=$9
 
 #Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
-python $ABCREPOSITORYPYTHONDIRECTORY/run.neighborhoods.py \
+python $ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py \
         --candidate_enhancer_regions $OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted.candidateRegions.bed \
-        --genes $REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED \
+        --genes $REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.chr22.bed \
         --H3K27ac $INPUTDIRECTORY/Chromatin/$INPUTBAMFORNEIGHBORHOODS \
         --DHS $INPUTDIRECTORY/Chromatin/$INPUTFILENAME.chr22.bam,$INPUTDIRECTORY/Chromatin/${INPUTFILENAME%?}2.chr22.bam \
         --expression_table $INPUTDIRECTORY/Expression/$EXPRESSIONTABLETXT \
         --chrom_sizes $REFERENCECHROMOSOMEDIRECTORY/chr22 \
-        --ubiquitously_expressed_genes $ABCREPOSITORYPYTHONDIRECTORY/../reference/$UBIQUITOUSLYEXPRESSEDGENESTXT \
-        --cellType K562 \
+        --ubiquitously_expressed_genes $ABCREPOSITORYSRCDIRECTORY/../reference/$UBIQUITOUSLYEXPRESSEDGENESTXT \
+        --cellType $CELLTYPEIDENTIFIER \
         --outdir $OUTPUTDIRECTORY/Neighborhoods/

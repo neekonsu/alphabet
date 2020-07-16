@@ -1,5 +1,7 @@
 # Alphabet
 ###     The Activity By Contact pipeline wrapper
+# —————————————————————————————————————————————————————————
+## In order for the pipeline to function properly, please adhere to the filestructure defined in https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
 ## 1. Define candidate enhancer regions
     a. Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
     b. Process ^peaks^ using 'makeCandidateRegions.py'

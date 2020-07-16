@@ -1,6 +1,22 @@
 package alphabet
 
-// StageThree takes in parameters and executes stage two of the pipeline as described in ABC_procedure.txt
-func StageThree() {
+import (
+	"fmt"
+	"os"
+	"os/exec"
+)
 
+// StageThree function runs stage3 of procedure described in README.md
+func StageThree(args *[]string) {
+	// Spawn shell command for `stage1.sh` script
+	stage1 := &exec.Cmd{
+		Path:   "./stage2.sh",
+		Args:   (*args),
+		Stdout: os.Stdout,
+		Stderr: os.Stdout,
+	}
+	// Generic error handling
+	if err := stage1.Run(); err != nil {
+		fmt.Println(err)
+	}
 }

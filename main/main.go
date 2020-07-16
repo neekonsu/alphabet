@@ -14,9 +14,9 @@ type Question struct {
 }
 
 func main() {
-	// Declare stage1Args to store arguments for stage1.sh
+	// Declare Args to store arguments for stage1.sh
 	// Declare and instantiate defaults to store questions for manual input
-	stage1Args := make([]string, 10)
+	Args := make([]string, 10)
 	defaults := []Question{
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
 			"./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
@@ -55,8 +55,8 @@ func main() {
 		}()
 		select {
 		case <-c1:
-			if stage1Args[i] = input; input == "default" {
-				stage1Args[i] = question.Default
+			if Args[i] = input; input == "default" {
+				Args[i] = question.Default
 			} else if input == "" {
 				log.Fatalln("No response, please try again")
 			}
@@ -65,18 +65,18 @@ func main() {
 		}
 		fmt.Println("——————————————————————————————————————————————")
 	}
-	if len(stage1Args[4]) == 0 {
+	if len(Args[4]) == 0 {
 		log.Fatalln("One or more fields left empty")
 	} else {
 		fmt.Println("All arguments set, waiting 3 seconds before starting stage 1 ...")
 		time.Sleep(2 * time.Second)
 		fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")
-		alphabet.StageOne(&stage1Args)
+		alphabet.StageOne(&Args)
 		fmt.Println(". . . Moving on to next stage, please wait . . . ")
 		time.Sleep(2 * time.Second)
-		alphabet.StageTwo(&stage1Args)
+		alphabet.StageTwo(&Args)
 		fmt.Println(". . . Moving on to next stage, please wait . . . ")
 		time.Sleep(2 * time.Second)
-		alphabet.StageThree()
+		alphabet.StageThree(&Args)
 	}
 }

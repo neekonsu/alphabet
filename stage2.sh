@@ -25,13 +25,13 @@ REFERENCESEQUENCEBED=$4
 # ex: (ENCFF384ZZM.chr22.bam)
 INPUTBAMFORNEIGHBORHOODS=$6
 # Filename of Expression Table txt file
-# ex: ()
+# ex: (K562.ENCFF934YBO.TPM.txt)
 EXPRESSIONTABLETXT=$7
 # Filename of Ubiquitously Expressed Genes txt file
-# ex: ()
+# ex: (UbiquitouslyExpressedGenesHG19.txt)
 UBIQUITOUSLYEXPRESSEDGENESTXT=$8
 # Celltype identifier (string)
-# ex: ()
+# ex: (K562)
 CELLTYPEIDENTIFIER=$9
 
 #Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:

@@ -5,22 +5,22 @@
 # How to run:
 ## With git repository:
 ### Direct execution:
-        |TERM⟩ mkdir -p ./go/src/github.com/neekonsu
-        |TERM⟩ cd ./go/src/github.com/neekonsu
-        |TERM⟩ git clone https://github.com/neekonsu/Alphabet.git
-        |TERM⟩ cd Alphabet
-        |TERM⟩ chmod +x stage1.sh stage2.sh stage3.sh
-        |TERM⟩ go run main/main.go
+        |$⟩ mkdir -p ./go/src/github.com/neekonsu
+        |$⟩ cd ./go/src/github.com/neekonsu
+        |$⟩ git clone https://github.com/neekonsu/Alphabet.git
+        |$⟩ cd Alphabet
+        |$⟩ chmod +x stage1.sh stage2.sh stage3.sh
+        |$⟩ go run main/main.go
 ### Containerized execution:
-        |TERM⟩ mkdir -p ./go/src/github.com/neekonsu
-        |TERM⟩ cd ./go/src/github.com/neekonsu
-        |TERM⟩ git clone https://github.com/neekonsu/Alphabet.git
-        |TERM⟩ cd Alphabet
-        |TERM⟩ docker build . -t alphabet:latest
-        |TERM⟩ docker container run -it --rm --gpus all --name Nickname alphabet:latest
+        |$⟩ mkdir -p ./go/src/github.com/neekonsu
+        |$⟩ cd ./go/src/github.com/neekonsu
+        |$⟩ git clone https://github.com/neekonsu/Alphabet.git
+        |$⟩ cd Alphabet
+        |$⟩ docker build . -t alphabet:latest
+        |$⟩ docker container run -it --rm --gpus all --name Nickname alphabet:latest
 ## With Docker Container:
-        |TERM⟩ docker pull neekonsu/abc_pipeline:latest
-        |TERM⟩ docker container run -it --rm --gpus all --name Nickname neekonsu/abc_pipeline:latest
+        |$⟩ docker pull neekonsu/abc_pipeline:latest
+        |$⟩ docker container run -it --rm --gpus all --name Nickname neekonsu/abc_pipeline:latest
 ## 1. Define candidate enhancer regions
     a. Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
     b. Process ^peaks^ using 'makeCandidateRegions.py'

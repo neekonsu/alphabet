@@ -16,7 +16,8 @@ type Question struct {
 func main() {
 	// Declare stage1Args to store arguments for stage1.sh
 	// Declare and instantiate defaults to store questions for manual input
-	var stage1Args [5]string
+	var stage1Args [8]string
+	// TODO: add additional questions for missing variables
 	defaults := []Question{
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
 			"./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
@@ -33,7 +34,9 @@ func main() {
 	fmt.Println("##### Alphabet, the ABC pipeline wrapper #####")
 	fmt.Println("——————————————————————————————————————————————\n")
 	for i, question := range defaults {
-		fmt.Println(question.Prompt)
+		// TODO: check if formatting is correct;
+		// `|1/8⟩ Path to input DNase-Seq or ATAC-Seq Bam file:\n`
+		fmt.Printf("|%v/%v⟩ %v:\n", (i + 1), len(defaults), question.Prompt)
 		fmt.Println("ex: ", question.Default, " (type default to select example response)")
 		fmt.Print("~~> ")
 		timeout := time.After(10 * time.Second)
@@ -62,7 +65,12 @@ func main() {
 		time.Sleep(2 * time.Second)
 		fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")
 		alphabet.StageOne(stage1Args[0], stage1Args[1], stage1Args[2], stage1Args[3], stage1Args[4])
+		fmt.Println(". . . Moving on to next stage, please wait . . . ")
+		time.Sleep(2 * time.Second)
+		// TODO: Populate arguments
 		alphabet.StageTwo()
+		fmt.Println(". . . Moving on to next stage, please wait . . . ")
+		time.Sleep(2 * time.Second)
 		alphabet.StageThree()
 	}
 

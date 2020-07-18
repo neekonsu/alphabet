@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# TODO: Provide example path/filename in each comment of each variable
 # TODO: attempt to eliminate more static paths by creating new variables
 
 # Base filename for the input bam file it MACS2 (sliced extension)

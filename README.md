@@ -1,4 +1,5 @@
-# Alphabet ![Alphabet logo](hxxxdpi.png)
+![Alphabet logo](hxxxdpi.png)
+# Alphabet
 ###     The Activity By Contact pipeline wrapper
 ## In order for the pipeline to function properly, please adhere to the filestructure defined in https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
 ## Check https://hub.docker.com/repository/docker/neekonsu/abc_pipeline/general for docker container preloaded with pipeline and template filestructure as well as example data

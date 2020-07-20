@@ -16,8 +16,9 @@ type Question struct {
 func main() {
 	// Declare Args to store arguments for stage1.sh
 	// Declare and instantiate defaults to store questions for manual input
-	Args := make([]string, 11)
+	Args := make([]string, 12)
 	defaults := []Question{
+		Question{"Placeholder","Placeholder"}
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
 			"../ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
 		Question{"Path to general MACS2 output directory",

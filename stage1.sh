@@ -4,7 +4,7 @@
 # TODO: attempt to eliminate more static paths by creating new variables
 
 # Base filename for the input bam file it MACS2 (sliced extension)
-INPUTFILENAME=$(basename "${0%.*}")
+INPUTFILENAME=$(basename "${1%.*}")
 # Input bam file for MACS2
 # ex: (./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam)
 INPUTBAM=$1

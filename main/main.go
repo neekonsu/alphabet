@@ -38,6 +38,8 @@ func main() {
 			"UbiquitouslyExpressedGenesHG19.txt"},
 		Question{"Celltype Identifier string",
 			"K562"},
+		Question{"HiC resolution for predict.py",
+			"5000"},
 	}
 	// Greet user
 	fmt.Println("##### Alphabet, the ABC pipeline wrapper #####")

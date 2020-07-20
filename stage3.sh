@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# TODO: Make "hic_resolution" an argument, modify main/mian.go to prompt value
-
 # Base filename for the input bam file it MACS2 (sliced extension)
 INPUTFILENAME=$(basename "${0%.*}")
 INPUTDIRECTORY="dirname $0"
@@ -32,14 +30,17 @@ UBIQUITOUSLYEXPRESSEDGENESTXT=$8
 # Celltype identifier (string)
 # ex: (K562)
 CELLTYPEIDENTIFIER=$9
+# HiC resolution argument
+# ex: (5000)
+HICRESOLUTION=${10}
 
 python $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --enhancers $OUTPUTDIRECTORY/Neighborhoods/EnhancerList.txt \
         --genes $OUTPUTDIRECTORY/Neighborhoods/GeneList.txt \
         --HiCdir $INPUTBAM/HiC/raw/ \
-        --hic_resolution 5000 \
+        --hic_resolution $HICRESOLUTION \
         --scale_hic_using_powerlaw \
         --threshold .02 \
-        --cellType K562 \
+        --cellType $CELLTYPEIDENTIFIER \
         --outdir $OUTPUTDIRECTORY/Predictions/ \
         --make_all_putative

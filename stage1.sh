@@ -26,8 +26,6 @@ CONSENSUSSIGNALARTIFACTFILENAME=$6
 
 WD=${12}
 
-# disable keyboard input
-stty -echo
 
 # Confirming that arguments are passed correctly between go and shell through printout
 echo "——————————————————————" >&2
@@ -66,6 +64,3 @@ python3 $ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py \
     --regions_whitelist $REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.TSS500bp.chr22.bed \
     --peakExtendFromSummit 250 \
     --nStrongestPeaks 3000
-
-# Enable keyboard input
-stty echo

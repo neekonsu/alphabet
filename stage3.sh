@@ -37,9 +37,6 @@ HICRESOLUTION=${11}
 WD=${12}
 cd $WD
 
-# disable keyboard input
-stty -echo
-
 python3 $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --enhancers $OUTPUTDIRECTORY/Neighborhoods/EnhancerList.txt \
         --genes $OUTPUTDIRECTORY/Neighborhoods/GeneList.txt \
@@ -50,6 +47,3 @@ python3 $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --cellType $CELLTYPEIDENTIFIER \
         --outdir $OUTPUTDIRECTORY/Predictions/ \
         --make_all_putative
-
-# Enable keyboard input
-stty echo

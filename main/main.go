@@ -23,7 +23,7 @@ func main() {
 		Question{"Path to general MACS2 output directory",
 			"../ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks"},
 		Question{"Path to ABC reference chromosome size directory",
-			"example_chr22/reference"},
+			"../ABC-Enhancer-Gene-Prediction/example_chr22/reference"},
 		Question{"Path to ABC python src directory",
 			"../ABC-Enhancer-Gene-Prediction/src"},
 		Question{"Filename of reference sequence curated (BED)",

@@ -33,6 +33,9 @@ UBIQUITOUSLYEXPRESSEDGENESTXT=$9
 # ex: (K562)
 CELLTYPEIDENTIFIER=${10}
 
+WD=${12}
+cd $WD
+
 #Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
 python $ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py \
         --candidate_enhancer_regions $OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted.candidateRegions.bed \

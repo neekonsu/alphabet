@@ -34,6 +34,9 @@ CELLTYPEIDENTIFIER=${10}
 # ex: (5000)
 HICRESOLUTION=${11}
 
+WD=${12}
+cd $WD
+
 python $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --enhancers $OUTPUTDIRECTORY/Neighborhoods/EnhancerList.txt \
         --genes $OUTPUTDIRECTORY/Neighborhoods/GeneList.txt \

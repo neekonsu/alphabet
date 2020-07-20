@@ -6,6 +6,7 @@ import (
 	"time"
 
 	alphabet "github.com/neekonsu/alphabet"
+	termios "github.com/pkg/term/termios"
 )
 
 // Question represents a single question in user prompt
@@ -67,6 +68,7 @@ func main() {
 		}
 		fmt.Println("——————————————————————————————————————————————")
 	}
+	termios.Tcflush(1, termios.TCIFLUSH)
 	fmt.Println("All arguments set, waiting 3 seconds before starting stage 1 ...")
 	time.Sleep(2 * time.Second)
 	fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")

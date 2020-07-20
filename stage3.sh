@@ -40,7 +40,7 @@ cd $WD
 # disable keyboard input
 stty -echo
 
-python $ABCREPOSITORYSRCDIRECTORY/predict.py \
+python3 $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --enhancers $OUTPUTDIRECTORY/Neighborhoods/EnhancerList.txt \
         --genes $OUTPUTDIRECTORY/Neighborhoods/GeneList.txt \
         --HiCdir $INPUTBAM/HiC/raw/ \

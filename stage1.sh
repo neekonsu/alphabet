@@ -57,7 +57,7 @@ bedtools sort -faidx $REFERENCECHROMOSOMEDIRECTORY/chr22 \
 # Define candidate regions using output of sorted ^narrowPeaks^
 # May need to change virtual environments here
 # `nStrongestPeaks` needs calibration. Read ABC documentation for commentary.
-python $ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py \
+python3 $ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py \
     --narrowPeak $OUTPUTDIRECTORY/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted \
     --bam $INPUTBAM \
     --outDir $OUTPUTDIRECTORY/Peaks/ \

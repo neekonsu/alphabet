@@ -40,7 +40,7 @@ cd $WD
 stty -echo
 
 #Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
-python $ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py \
+python3 $ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py \
         --candidate_enhancer_regions $OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted.candidateRegions.bed \
         --genes $REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.chr22.bed \
         --H3K27ac $INPUTDIRECTORY/Chromatin/$INPUTBAMFORNEIGHBORHOODS \

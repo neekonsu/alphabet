@@ -3,10 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"syscall"
 	"time"
-
-	"github.com/pkg/term/termios"
 
 	alphabet "github.com/neekonsu/alphabet"
 )
@@ -70,12 +67,6 @@ func main() {
 		}
 		fmt.Println("——————————————————————————————————————————————")
 	}
-	go func() {
-		for {
-			termios.Tcflush(uintptr(syscall.Stdin), termios.TCIFLUSH)
-			time.Sleep(8 * time.Millisecond)
-		}
-	}()
 	fmt.Println("All arguments set, waiting 3 seconds before starting stage 1 ...")
 	time.Sleep(2 * time.Second)
 	fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")

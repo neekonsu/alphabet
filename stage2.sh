@@ -36,6 +36,9 @@ CELLTYPEIDENTIFIER=${10}
 WD=${12}
 cd $WD
 
+# disable keyboard input
+stty -echo
+
 #Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
 python $ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py \
         --candidate_enhancer_regions $OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted.candidateRegions.bed \
@@ -47,3 +50,6 @@ python $ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py \
         --ubiquitously_expressed_genes $ABCREPOSITORYSRCDIRECTORY/../reference/$UBIQUITOUSLYEXPRESSEDGENESTXT \
         --cellType $CELLTYPEIDENTIFIER \
         --outdir $OUTPUTDIRECTORY/Neighborhoods/
+
+# Enable keyboard input
+stty echo

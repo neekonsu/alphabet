@@ -7,27 +7,27 @@
 INPUTFILENAME=$(basename "${0%.*}")
 # Input bam file for MACS2
 # ex: (./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam)
-INPUTBAM=$0
+INPUTBAM=$1
 # Output directory for MACS2, input for bedtools
 # ex: (./example_chr22/ABC_output)
-OUTPUTDIRECTORY=$1
+OUTPUTDIRECTORY=$2
 # Directory of reference chromosome, located inside ABC git repo
 # ex: (./example_chr22/reference/chr22)
-REFERENCECHROMOSOMEDIRECTORY=$2
+REFERENCECHROMOSOMEDIRECTORY=$3
 # Directory of all python scripts/sourcecode in ABC git repo
 # ex: (./src)
-ABCREPOSITORYSRCDIRECTORY=$3
+ABCREPOSITORYSRCDIRECTORY=$4
 # Filename of reference sequence curated w/o file extension
 # ex: (RefSeqCurated.170308.bed.CollapsedGeneBounds)
-REFERENCESEQUENCEBED=$4
+REFERENCESEQUENCEBED=$5
 # Filename Consensus Signal Artifact
 # ex: (wgEncodeHg19ConsensusSignalArtifactRegions.bed)
-CONSENSUSSIGNALARTIFACTFILENAME=$5
+CONSENSUSSIGNALARTIFACTFILENAME=$6
 
 # Confirming that arguments are passed correctly between go and shell through printout
 echo "——————————————————————" >&2
 echo "Confirming arguments:" >&2
-echo "0: $0,\n1: $1,\n2: $2,\n3: $3,\n4: $4,\n5: $5,\n6: $6,\n7: $7,\n8: $8,\n9: $9,\n10: ${10}" >&2
+echo "1: $1,\n2: $2,\n3: $3,\n4: $4,\n5: $5,\n6: $6,\n7: $7,\n8: $8,\n9: $9,\n10: ${10},\n11: ${11}" >&2
 echo "——————————————————————" >&2
 echo "Wait 3 seconds . . . "
 sleep 3

@@ -5,6 +5,8 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+
+	pp "github.com/kr/pretty"
 )
 
 // StageOne function runs stage1 of procedure described in README.md
@@ -14,9 +16,9 @@ func StageOne(args *[]string) {
 			(*args)[i] = (*args)[i][:len((*args))-1]
 		}
 	}
-	fmt.Println("————————————————————————————————")
-	fmt.Println(*args)
-	fmt.Println("————————————————————————————————")
+	fmt.Println("~~~~~~~~~~~~~~~~~~~~~")
+	pp.Println(*args)
+	fmt.Println("~~~~~~~~~~~~~~~~~~~~~")
 	// Spawn shell command for `stage1.sh` script
 	stage1 := &exec.Cmd{
 		Path:   "./stage1.sh",

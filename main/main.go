@@ -57,7 +57,7 @@ func main() {
 		}()
 		select {
 		case <-c1:
-			if Args[i] = input; input == "default" {
+			if Args[i] = input; input == "default" || input == "" {
 				Args[i] = question.Default
 			} else if input == "" {
 				log.Fatalln("No response, please try again")

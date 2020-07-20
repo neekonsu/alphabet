@@ -14,6 +14,9 @@ func StageOne(args *[]string) {
 			(*args)[i] = (*args)[i][:len((*args))-1]
 		}
 	}
+	fmt.Println("————————————————————————————————")
+	fmt.Println(&args)
+	fmt.Println("————————————————————————————————")
 	// Spawn shell command for `stage1.sh` script
 	stage1 := &exec.Cmd{
 		Path:   "./stage1.sh",

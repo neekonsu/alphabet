@@ -15,7 +15,7 @@ func StageOne(args *[]string) {
 		}
 	}
 	fmt.Println("————————————————————————————————")
-	fmt.Println(&args)
+	fmt.Println(*args)
 	fmt.Println("————————————————————————————————")
 	// Spawn shell command for `stage1.sh` script
 	stage1 := &exec.Cmd{

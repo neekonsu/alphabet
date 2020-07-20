@@ -19,13 +19,13 @@ func main() {
 	Args := make([]string, 10)
 	defaults := []Question{
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
-			"./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
+			"../ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
 		Question{"Path to general MACS2 output directory",
-			"./example_chr22/ABC_output/Peaks"},
+			"../ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks"},
 		Question{"Path to ABC reference chromosome size directory",
 			"example_chr22/reference"},
 		Question{"Path to ABC python src directory",
-			"./src"},
+			"../ABC-Enhancer-Gene-Prediction/src"},
 		Question{"Filename of reference sequence curated (BED)",
 			"RefSeqCurated.170308.bed.CollapsedGeneBounds"},
 		Question{"Filename Consensus Signal Artifact file",

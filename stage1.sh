@@ -24,7 +24,7 @@ REFERENCESEQUENCEBED=$5
 # ex: (wgEncodeHg19ConsensusSignalArtifactRegions.bed)
 CONSENSUSSIGNALARTIFACTFILENAME=$6
 
-WD: ${12}
+WD=${12}
 
 # Confirming that arguments are passed correctly between go and shell through printout
 echo "——————————————————————" >&2

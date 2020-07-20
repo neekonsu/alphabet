@@ -16,17 +16,17 @@ type Question struct {
 func main() {
 	// Declare Args to store arguments for stage1.sh
 	// Declare and instantiate defaults to store questions for manual input
-	Args := make([]string, 12)
+	Args := make([]string, 13)
 	defaults := []Question{
 		Question{"Placeholder", "Placeholder"},
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
-			"../ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
+			"./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
 		Question{"Path to general MACS2 output directory",
-			"../ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks"},
+			"./example_chr22/ABC_output/Peaks"},
 		Question{"Path to ABC reference chromosome size directory",
-			"../ABC-Enhancer-Gene-Prediction/example_chr22/reference"},
+			"./example_chr22/reference"},
 		Question{"Path to ABC python src directory",
-			"../ABC-Enhancer-Gene-Prediction/src"},
+			"./src"},
 		Question{"Filename of reference sequence curated (BED)",
 			"RefSeqCurated.170308.bed.CollapsedGeneBounds"},
 		Question{"Filename Consensus Signal Artifact file",
@@ -41,12 +41,14 @@ func main() {
 			"K562"},
 		Question{"HiC resolution for predict.py",
 			"5000"},
+		Question{"Path to ABC-Enhancer-Gene-Prediction repository (directory)",
+			"../ABC-Enhancer-Gene-Prediction"},
 	}
 	// Greet user
 	fmt.Println("##### Alphabet, the ABC pipeline wrapper #####")
 	fmt.Print("——————————————————————————————————————————————\n\n")
 	timeout := time.After(60 * 9 * time.Second)
-	for i, question := range defaults {
+	for i, question := range defaults[1:] {
 		fmt.Printf("|%v/%v⟩ %v:\n", (i + 1), len(defaults), question.Prompt)
 		fmt.Println("ex: ", question.Default, " (type default to select example response)")
 		fmt.Print("~~> ")

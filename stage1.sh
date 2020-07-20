@@ -29,7 +29,7 @@ WD: ${12}
 # Confirming that arguments are passed correctly between go and shell through printout
 echo "——————————————————————" >&2
 echo "Confirming arguments:" >&2
-echo "1: $1,\n2: $2,\n3: $3,\n4: $4,\n5: $5,\n6: $6,\n7: $7,\n8: $8,\n9: $9,\n10: ${10},\n11: ${11}" >&2
+echo "1: $1,\n2: $2,\n3: $3,\n4: $4,\n5: $5,\n6: $6,\n7: $7,\n8: $8,\n9: $9,\n10: ${10},\n11: ${11},\n ${12}" >&2
 echo "——————————————————————" >&2
 echo "Wait 3 seconds . . . "
 sleep 3

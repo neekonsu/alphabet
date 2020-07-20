@@ -18,7 +18,6 @@ func main() {
 	// Declare and instantiate defaults to store questions for manual input
 	Args := make([]string, 13)
 	defaults := []Question{
-		Question{"Placeholder", "Placeholder"},
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
 			"./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
 		Question{"Path to general MACS2 output directory",
@@ -48,7 +47,7 @@ func main() {
 	fmt.Println("##### Alphabet, the ABC pipeline wrapper #####")
 	fmt.Print("——————————————————————————————————————————————\n\n")
 	timeout := time.After(60 * 9 * time.Second)
-	for i, question := range defaults[1:] {
+	for i, question := range defaults {
 		fmt.Printf("|%v/%v⟩ %v:\n", (i + 1), len(defaults), question.Prompt)
 		fmt.Println("ex: ", question.Default, " (type default to select example response)")
 		fmt.Print("~~> ")
@@ -60,28 +59,23 @@ func main() {
 		}()
 		select {
 		case <-c1:
-			if Args[i] = input; input == "default" || input == "" {
-				Args[i] = question.Default
-			} else if input == "" {
-				log.Fatalln("No response, please try again")
+			if Args[i+1] = input; input == "default" || input == "" {
+				Args[i+1] = question.Default
 			}
 		case <-timeout:
 			log.Fatalln("Input timed out, please try again")
 		}
 		fmt.Println("——————————————————————————————————————————————")
 	}
-	if len(Args[4]) == 0 {
-		log.Fatalln("One or more fields left empty")
-	} else {
-		fmt.Println("All arguments set, waiting 3 seconds before starting stage 1 ...")
-		time.Sleep(2 * time.Second)
-		fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")
-		alphabet.StageOne(&Args)
-		fmt.Println(". . . Moving on to next stage, please wait . . . ")
-		time.Sleep(2 * time.Second)
-		alphabet.StageTwo(&Args)
-		fmt.Println(". . . Moving on to next stage, please wait . . . ")
-		time.Sleep(2 * time.Second)
-		alphabet.StageThree(&Args)
-	}
+	fmt.Println("All arguments set, waiting 3 seconds before starting stage 1 ...")
+	time.Sleep(2 * time.Second)
+	fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")
+	alphabet.StageOne(&Args)
+	fmt.Println(". . . Moving on to next stage, please wait . . . ")
+	time.Sleep(2 * time.Second)
+	alphabet.StageTwo(&Args)
+	fmt.Println(". . . Moving on to next stage, please wait . . . ")
+	time.Sleep(2 * time.Second)
+	alphabet.StageThree(&Args)
+
 }

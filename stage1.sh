@@ -25,8 +25,10 @@ REFERENCESEQUENCEBED=$4
 CONSENSUSSIGNALARTIFACTFILENAME=$5
 
 # Confirming that arguments are passed correctly between go and shell through printout
+echo "_____________________" >&2
 echo "Confirming arguments:" >&2
-echo "0: $0, 1: $1, 2: $2, 3: $3, 4: $4, 5: $5, 6: $6, 7: $7, 8: $8, 9: $9" >&2
+echo "0: $0,\n1: $1,\n2: $2,\n3: $3,\n4: $4,\n5: $5,\n6: $6,\n7: $7,\n8: $8,\n9: $9,\n10: ${10}" >&2
+echo "_____________________" >&2
 echo "Wait 3 seconds . . . "
 sleep 3
 

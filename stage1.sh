@@ -37,7 +37,6 @@ sleep 3
 echo "Setting working directory to ${12}"
 cd $WD
 
-pip3 install numpy scipy pandas
 # Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
 macs2 callpeak \
     -t $INPUTBAM \

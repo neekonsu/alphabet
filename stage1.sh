@@ -37,6 +37,7 @@ sleep 3
 echo "Setting working directory to ${12}"
 cd $WD
 
+pip3 install ez_setup setuptools Cython pyranges numpy scipy pandas
 # Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
 macs2 callpeak \
     -t $INPUTBAM \
@@ -57,7 +58,6 @@ bedtools sort -faidx $REFERENCECHROMOSOMEDIRECTORY/chr22 \
 # `nStrongestPeaks` needs calibration. Read ABC documentation for commentary.
 python3 -m venv env
 . ./env/bin/activate
-pip3 install ez_setup setuptools Cython pyranges numpy scipy pandas
 python3 $ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py \
     --narrowPeak $OUTPUTDIRECTORY/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted \
     --bam $INPUTBAM \

@@ -24,9 +24,6 @@ REFERENCESEQUENCEBED=$5
 # ex: (wgEncodeHg19ConsensusSignalArtifactRegions.bed)
 CONSENSUSSIGNALARTIFACTFILENAME=$6
 
-WD=${12}
-
-
 # Confirming that arguments are passed correctly between go and shell through printout
 echo "——————————————————————" >&2
 echo "Confirming arguments:" >&2
@@ -35,34 +32,34 @@ echo "——————————————————————" >&2
 echo "Wait 3 seconds . . . "
 sleep 3
 echo "Setting working directory to ${12}"
-cd $WD
+cd "${12}"
 
 # Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
 macs2 callpeak \
-    -t $INPUTBAM \
-    -n $INPUTFILENAME.chr22.macs2 \
+    -t "$INPUTBAM" \
+    -n $"INPUTFILENAME.chr22.macs2" \
     -f BAM \
     -g hs \
     -p .1 \
     --call-summits \
-    --outdir $OUTPUTDIRECTORY/Peaks/
+    --outdir "$OUTPUTDIRECTORY/Peaks/"
 
 # Sort narrowPeak file using bedtools
-bedtools sort -faidx $REFERENCECHROMOSOMEDIRECTORY/chr22 \
-    -i $OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak 
-    > $OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted
+bedtools sort -faidx "$REFERENCECHROMOSOMEDIRECTORY/chr22" \
+    -i "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak" 
+    > "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted"
 
 # Define candidate regions using output of sorted ^narrowPeaks^
 # May need to change virtual environments here
 # `nStrongestPeaks` needs calibration. Read ABC documentation for commentary.
 conda env create -f environment.yml
 conda env list
-python3 $ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py \
-    --narrowPeak $OUTPUTDIRECTORY/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted \
-    --bam $INPUTBAM \
-    --outDir $OUTPUTDIRECTORY/Peaks/ \
-    --chrom_sizes $REFERENCECHROMOSOMEDIRECTORY/chr22 \
-    --regions_blacklist $ABCREPOSITORYSRCDIRECTORY/../reference/$CONSENSUSSIGNALARTIFACTFILENAME \
-    --regions_whitelist $REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.TSS500bp.chr22.bed \
+python3 "$ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py" \
+    --narrowPeak "$OUTPUTDIRECTORY/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted" \
+    --bam "$INPUTBAM" \
+    --outDir "$OUTPUTDIRECTORY/Peaks/" \
+    --chrom_sizes "$REFERENCECHROMOSOMEDIRECTORY/chr22" \
+    --regions_blacklist "$ABCREPOSITORYSRCDIRECTORY/../reference/$CONSENSUSSIGNALARTIFACTFILENAME" \
+    --regions_whitelist "$REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.TSS500bp.chr22.bed" \
     --peakExtendFromSummit 250 \
     --nStrongestPeaks 3000

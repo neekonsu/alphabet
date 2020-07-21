@@ -21,7 +21,7 @@ func main() {
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
 			"./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
 		Question{"Path to general MACS2 output directory",
-			"./example_chr22/ABC_output/Peaks"},
+			"./example_chr22/ABC_output"},
 		Question{"Path to ABC reference chromosome size directory",
 			"./example_chr22/reference"},
 		Question{"Path to ABC python src directory",

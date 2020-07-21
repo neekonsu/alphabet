@@ -15,7 +15,7 @@ RUN rm ./dependencies.conf
 RUN git clone https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
 RUN git clone  https://github.com/neekonsu/alphabet
 RUN git clone https://github.com/neekonsu/juicer
-RUN pip3 install setuptools Cython pyranges numpy scipy pandas
+RUN pip3 install ez_setup setuptools Cython pyranges numpy scipy pandas
 
 RUN chmod +x ./alphabet/*.sh
 

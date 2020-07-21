@@ -16,6 +16,8 @@ RUN git clone https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
 RUN git clone  https://github.com/neekonsu/alphabet
 RUN git clone https://github.com/neekonsu/juicer
 
+RUN go get github.com/kr/pretty
+
 RUN chmod +x ./alphabet/*.sh
 
 EXPOSE 5000

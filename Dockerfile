@@ -18,6 +18,13 @@ RUN git clone https://github.com/neekonsu/juicer
 
 RUN go get github.com/kr/pretty
 
+RUN curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN sh Miniconda3-latest-Linux-x86_64.sh
+RUN conda config --add channels defaults
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda install pyranges
+
 RUN chmod +x ./alphabet/*.sh
 
 EXPOSE 5000

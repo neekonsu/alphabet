@@ -1,0 +1,11 @@
+name: environment
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - numpy
+  - pandas
+  - pybigwig
+  - pyranges
+  - scipy

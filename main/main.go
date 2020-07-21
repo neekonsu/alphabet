@@ -49,7 +49,7 @@ func main() {
 	timeout := time.After(60 * 9 * time.Second)
 	for i, question := range defaults {
 		fmt.Printf("|%v/%v⟩ %v:\n", (i + 1), len(defaults), question.Prompt)
-		fmt.Println("ex: ", question.Default, " (type default to select example response)")
+		fmt.Println("ex: ", question.Default, " (type default or press enter to select example response)")
 		fmt.Print("~~> ")
 		var input string
 		c1 := make(chan string, 1)

@@ -37,7 +37,6 @@ WD=${12}
 cd $WD
 
 #Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
-python3 -m venv env
 . ./env/bin/activate
 python3 $ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py \
         --candidate_enhancer_regions $OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted.candidateRegions.bed \

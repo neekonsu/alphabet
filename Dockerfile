@@ -27,7 +27,7 @@ RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
 RUN conda env create -f ./alphabet/conda.yml
 RUN conda init bash
-RUN source /root/.bashrc
+RUN . /root/.bashrc
 RUN conda activate environment
 RUN conda install pyranges numpy scipy pandas pybigwig
 RUN rm ./Anaconda3-2020.02-Linux-x86_64.sh

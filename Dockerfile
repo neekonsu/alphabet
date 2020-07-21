@@ -26,11 +26,11 @@ RUN conda config --add channels defaults
 RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
 RUN conda init bash
-RUN conda create -f /go/src/github.com/neekonsu/alphabet/conda.yml
+RUN conda create --name ./alphabet/conda.yml
 RUN conda activate environment
 RUN conda install pyranges numpy scipy pandas pybigwig
 RUN rm ./Anaconda3-2020.02-Linux-x86_64.sh
 
-RUN chmod u+x /go/src/github.com/neekonsu/alphabet/*.sh
+RUN chmod u+x ./alphabet/*.sh
 
 EXPOSE 5000

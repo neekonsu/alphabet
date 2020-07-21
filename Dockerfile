@@ -8,7 +8,6 @@ COPY ./run.sh ./run.sh
 
 RUN export DEBIAN_FRONTEND=noninteractive
 ARG DEBIAN_FRONTEND=noninteractive
-
 RUN apt update -y
 RUN apt install -y -q $(cat dependencies.conf) --fix-missing
 RUN rm ./dependencies.conf

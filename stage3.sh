@@ -38,7 +38,7 @@ WD=${12}
 cd $WD
 
 python3 -m venv env
-source env/bin/activate
+. ./env/bin/activate
 python3 $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --enhancers $OUTPUTDIRECTORY/Neighborhoods/EnhancerList.txt \
         --genes $OUTPUTDIRECTORY/Neighborhoods/GeneList.txt \

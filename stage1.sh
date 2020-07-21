@@ -56,7 +56,7 @@ bedtools sort -faidx $REFERENCECHROMOSOMEDIRECTORY/chr22 \
 # May need to change virtual environments here
 # `nStrongestPeaks` needs calibration. Read ABC documentation for commentary.
 python3 -m venv env
-source env/bin/activate
+. ./env/bin/activate
 python3 $ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py \
     --narrowPeak $OUTPUTDIRECTORY/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted \
     --bam $INPUTBAM \

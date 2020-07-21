@@ -37,6 +37,8 @@ HICRESOLUTION=${11}
 WD=${12}
 cd $WD
 
+python3 -m venv env
+source env/bin/activate
 python3 $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --enhancers $OUTPUTDIRECTORY/Neighborhoods/EnhancerList.txt \
         --genes $OUTPUTDIRECTORY/Neighborhoods/GeneList.txt \
@@ -47,3 +49,4 @@ python3 $ABCREPOSITORYSRCDIRECTORY/predict.py \
         --cellType $CELLTYPEIDENTIFIER \
         --outdir $OUTPUTDIRECTORY/Predictions/ \
         --make_all_putative
+deactivate

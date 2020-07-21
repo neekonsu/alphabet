@@ -1,4 +1,5 @@
 #!/bin/sh
+
 conda init bash && \
 . /root/.bashrc && \
 conda activate environment && \

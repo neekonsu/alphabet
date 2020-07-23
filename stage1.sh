@@ -55,7 +55,7 @@ bedtools sort -faidx "$REFERENCECHROMOSOMEDIRECTORY/chr22" \
 conda env create -f environment.yml
 conda env list
 python3 "$ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py" \
-    --narrowPeak "$OUTPUTDIRECTORY/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted" \
+    --narrowPeak "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted" \
     --bam "$INPUTBAM" \
     --outDir "$OUTPUTDIRECTORY/Peaks/" \
     --chrom_sizes "$REFERENCECHROMOSOMEDIRECTORY/chr22" \

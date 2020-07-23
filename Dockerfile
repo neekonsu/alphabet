@@ -19,8 +19,7 @@ RUN git clone https://github.com/neekonsu/juicer
 RUN go get github.com/kr/pretty
 
 RUN curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
-RUN curl -O https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction/archive/v0.2.2.tar.gz
-RUN gunzip ABC-Enhancer-Gene-Prediction/archive/v0.2.2.tar.gz
+RUN curl -O https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction/archive/v0.2.2.tar.gz | gunzip
 RUN bash ./Anaconda3-2020.02-Linux-x86_64.sh -b -p /root/anaconda
 ENV PATH=/root/anaconda/bin:$PATH
 RUN conda config --add channels defaults

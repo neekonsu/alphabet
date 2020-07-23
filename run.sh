@@ -1,5 +1,3 @@
 #!/bin/sh
 
-cd alphabet && \
-git pull origin master && \
-go run "main/main.go"
+docker container run -it --gpus all --name main neekonsu/abc_pipeline:latest

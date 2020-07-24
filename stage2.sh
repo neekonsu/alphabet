@@ -36,13 +36,35 @@ CELLTYPEIDENTIFIER=${10}
 cd "${12}"
 
 #Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
-python3 "$ABCREPOSITORYSRCDIRECTORY/run.neighborhoods.py" \
-        --candidate_enhancer_regions "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted.candidateRegions.bed" \
-        --genes "$REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.chr22.bed" \
-        --H3K27ac "$INPUTDIRECTORY/Chromatin/$INPUTBAMFORNEIGHBORHOODS" \
-        --DHS "$INPUTDIRECTORY/Chromatin/$INPUTFILENAME.chr22.bam,$INPUTDIRECTORY/Chromatin/${INPUTFILENAME%?}2.chr22.bam" \
-        --expression_table "$INPUTDIRECTORY/Expression/$EXPRESSIONTABLETXT" \
-        --chrom_sizes "$REFERENCECHROMOSOMEDIRECTORY/chr22" \
-        --ubiquitously_expressed_genes "$ABCREPOSITORYSRCDIRECTORY/../reference/$UBIQUITOUSLYEXPRESSEDGENESTXT" \
-        --cellType "$CELLTYPEIDENTIFIER" \
-        --outdir "$OUTPUTDIRECTORY/Neighborhoods/"
+echo "Verifying arguments for run.neighborhoods.py"
+echo "——————————————————————"
+echo "${ABCREPOSITORYSRCDIRECTORY}/run.neighborhoods.py = src/run.neighborhoods.py"
+echo "——————————————————————"
+echo "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.candidateRegions.bed = example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed"
+echo "——————————————————————"
+echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.chr22.bed = example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.chr22.bed"
+echo "——————————————————————"
+echo "${INPUTDIRECTORY}/Chromatin/${INPUTBAMFORNEIGHBORHOODS} = example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam"
+echo "——————————————————————"
+echo "${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME}.chr22.bam,${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME%?}2.chr22.bam = example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam,example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam"
+echo "——————————————————————"
+echo "${INPUTDIRECTORY}/Expression/${EXPRESSIONTABLETXT} = example_chr22/input_data/Expression/K562.ENCFF934YBO.TPM.txt"
+echo "——————————————————————"
+echo "${REFERENCECHROMOSOMEDIRECTORY}/chr22 = example_chr22/reference/chr22"
+echo "——————————————————————"
+echo "${ABCREPOSITORYSRCDIRECTORY}/../reference/${UBIQUITOUSLYEXPRESSEDGENESTXT} = reference/UbiquitouslyExpressedGenesHG19.txt"
+echo "——————————————————————"
+echo "${CELLTYPEIDENTIFIER} = K562"
+echo "——————————————————————"
+echo "${OUTPUTDIRECTORY}/Neighborhoods/ = example_chr22/ABC_output/Neighborhoods/"
+echo "——————————————————————"
+python3 "${ABCREPOSITORYSRCDIRECTORY}/run.neighborhoods.py" \
+        --candidate_enhancer_regions "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.candidateRegions.bed" \
+        --genes "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.chr22.bed" \
+        --H3K27ac "${INPUTDIRECTORY}/Chromatin/${INPUTBAMFORNEIGHBORHOODS}" \
+        --DHS "${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME}.chr22.bam,${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME%?}2.chr22.bam" \
+        --expression_table "${INPUTDIRECTORY}/Expression/${EXPRESSIONTABLETXT}" \
+        --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
+        --ubiquitously_expressed_genes "${ABCREPOSITORYSRCDIRECTORY}/../reference/${UBIQUITOUSLYEXPRESSEDGENESTXT}" \
+        --cellType "${CELLTYPEIDENTIFIER}" \
+        --outdir "${OUTPUTDIRECTORY}/Neighborhoods/"

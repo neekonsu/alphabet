@@ -19,13 +19,29 @@ HICRESOLUTION=${11}
 WD=${12}
 cd $WD
 
-python3 "$ABCREPOSITORYSRCDIRECTORY/predict.py" \
-        --enhancers "$OUTPUTDIRECTORY/Neighborhoods/EnhancerList.txt" \
-        --genes "$OUTPUTDIRECTORY/Neighborhoods/GeneList.txt" \
-        --HiCdir "$INPUTBAM/HiC/raw/" \
-        --hic_resolution "$HICRESOLUTION" \
+echo "Verifying arguments for run.neighborhoods.py"
+echo "——————————————————————"
+echo "${ABCREPOSITORYSRCDIRECTORY}/predict.py = src/predict.py"
+echo "——————————————————————"
+echo "${OUTPUTDIRECTORY}/Neighborhoods/EnhancerList.txt = example_chr22/ABC_output/Neighborhoods/EnhancerList.txt"
+echo "——————————————————————"
+echo "${OUTPUTDIRECTORY}/Neighborhoods/GeneList.txt = example_chr22/ABC_output/Neighborhoods/GeneList.txt"
+echo "——————————————————————"
+echo "${INPUTBAM}/HiC/raw/ = example_chr22/input_data/HiC/raw/"
+echo "——————————————————————"
+echo "${HICRESOLUTION} = 5000"
+echo "——————————————————————"
+echo "${CELLTYPEIDENTIFIER} = K562"
+echo "——————————————————————"
+echo "${OUTPUTDIRECTORY}/Predictions/ = example_chr22/ABC_output/Predictions/"
+echo "——————————————————————"
+python3 "${ABCREPOSITORYSRCDIRECTORY}/predict.py" \
+        --enhancers "${OUTPUTDIRECTORY}/Neighborhoods/EnhancerList.txt" \
+        --genes "${OUTPUTDIRECTORY}/Neighborhoods/GeneList.txt" \
+        --HiCdir "${INPUTBAM}/HiC/raw/" \
+        --hic_resolution "${HICRESOLUTION}" \
         --scale_hic_using_powerlaw \
         --threshold .02 \
-        --cellType "$CELLTYPEIDENTIFIER" \
-        --outdir "$OUTPUTDIRECTORY/Predictions/" \
+        --cellType "${CELLTYPEIDENTIFIER}" \
+        --outdir "${OUTPUTDIRECTORY}/Predictions/" \
         --make_all_putative

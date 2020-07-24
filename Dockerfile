@@ -4,7 +4,6 @@ RUN mkdir -p /go/src/github.com/neekonsu
 WORKDIR /go/src/github.com/neekonsu
 
 COPY ./dependencies.conf ./dependencies.conf
-COPY ./run.sh ./run.sh
 
 RUN export DEBIAN_FRONTEND=noninteractive
 ARG DEBIAN_FRONTEND=noninteractive

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Input bam file for MACS2
-# ex: (./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam)
-INPUTBAM=$1
+# Input data directory for MACS2
+# ex: (./example_chr22/input_data/Chromatin)
+INPUTDIRECTORY="dirname $1"
 # Output directory for MACS2, input for bedtools
 # ex: (./example_chr22/ABC_output)
 OUTPUTDIRECTORY=$2
@@ -30,7 +30,7 @@ echo "——————————————————————"
 echo "${OUTPUTDIRECTORY}/Neighborhoods/GeneList.txt"
 echo "example_chr22/ABC_output/Neighborhoods/GeneList.txt"
 echo "——————————————————————"
-echo "${INPUTBAM}/HiC/raw/"
+echo "${INPUTDIRECTORY}/HiC/raw/"
 echo "example_chr22/input_data/HiC/raw/"
 echo "——————————————————————"
 echo "${HICRESOLUTION}"

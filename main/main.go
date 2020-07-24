@@ -71,10 +71,10 @@ func main() {
 	time.Sleep(3 * time.Second)
 	fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")
 	alphabet.StageOne(&Args)
-	fmt.Println("\n. . . Moving on to next stage, please wait . . . ")
+	fmt.Print("\n. . . Moving on to stage 2, please wait . . . \n\n")
 	time.Sleep(3 * time.Second)
 	alphabet.StageTwo(&Args)
-	fmt.Println("\n. . . Moving on to next stage, please wait . . . ")
+	fmt.Print("\n. . . Moving on to stage 3, please wait . . . \n\n")
 	time.Sleep(3 * time.Second)
 	alphabet.StageThree(&Args)
 

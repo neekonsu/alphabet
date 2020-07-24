@@ -25,19 +25,27 @@ REFERENCESEQUENCEBED=$5
 CONSENSUSSIGNALARTIFACTFILENAME=$6
 
 # Confirming that arguments are passed correctly between go and shell through printout
-echo "——————————————————————" >&2
-echo "Confirming arguments:" >&2
-echo "1: $1\n2: $2\n3: $3\n4: $4\n5: $5\n6: $6\n7: $7\n8: $8\n9: $9\n10: ${10}\n11: ${11}\n12: ${12}" >&2
-echo "——————————————————————" >&2
+echo "——————————————————————"
+echo "Confirming arguments:"
+echo "1: $1\n2: $2\n3: $3\n4: $4\n5: $5\n6: $6\n7: $7\n8: $8\n9: $9\n10: ${10}\n11: ${11}\n12: ${12}"
+echo "——————————————————————"
 echo "Wait 3 seconds . . . "
 sleep 3
 echo "Setting working directory to ${12}"
 cd "${12}"
 
 # Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
+echo "Verifying arguments for 'macs2 callpeak'"
+echo "——————————————————————"
+echo "$INPUTBAM = example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"
+echo "——————————————————————"
+echo "$INPUTFILENAME.chr22.macs2 = wgEncodeUwDnaseK562AlnRep1.chr22.macs2"
+echo "——————————————————————"
+echo "$OUTPUTDIRECTORY/Peaks/ = example_chr22/ABC_output/Peaks/"
+echo "——————————————————————"
 macs2 callpeak \
     -t "$INPUTBAM" \
-    -n $"INPUTFILENAME.chr22.macs2" \
+    -n "$INPUTFILENAME.chr22.macs2" \
     -f BAM \
     -g hs \
     -p .1 \
@@ -45,6 +53,14 @@ macs2 callpeak \
     --outdir "$OUTPUTDIRECTORY/Peaks/"
 
 # Sort narrowPeak file using bedtools
+echo "Verifying arguments for 'bedtools sort -faidx'"
+echo "——————————————————————"
+echo "$REFERENCECHROMOSOMEDIRECTORY/chr22 = example_chr22/reference/chr22"
+echo "——————————————————————"
+echo "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak = example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak"
+echo "——————————————————————"
+echo "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted = example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted"
+echo "——————————————————————"
 bedtools sort -faidx "$REFERENCECHROMOSOMEDIRECTORY/chr22" \
     -i "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak" 
     > "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted"
@@ -52,14 +68,28 @@ bedtools sort -faidx "$REFERENCECHROMOSOMEDIRECTORY/chr22" \
 # Define candidate regions using output of sorted ^narrowPeaks^
 # May need to change virtual environments here
 # `nStrongestPeaks` needs calibration. Read ABC documentation for commentary.
-conda env create -f environment.yml
-conda env list
+echo "Verifying arguments for 'makeCandidateRegions.py'"
+echo "——————————————————————"
+echo "$ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py = src/makeCandidateRegions.py"
+echo "——————————————————————"
+echo "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted = example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted"
+echo "——————————————————————"
+echo "$INPUTBAM = example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"
+echo "——————————————————————"
+echo "$OUTPUTDIRECTORY/Peaks/ = example_chr22/ABC_output/Peaks/"
+echo "——————————————————————"
+echo "$REFERENCECHROMOSOMEDIRECTORY/chr22 = example_chr22/reference/chr22"
+echo "——————————————————————"
+echo "./reference/$CONSENSUSSIGNALARTIFACTFILENAME = reference/wgEncodeHg19ConsensusSignalArtifactRegions.bed"
+echo "——————————————————————"
+echo "$REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.TSS500bp.chr22.bed = example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
+echo "——————————————————————"
 python3 "$ABCREPOSITORYSRCDIRECTORY/makeCandidateRegions.py" \
     --narrowPeak "$OUTPUTDIRECTORY/Peaks/$INPUTFILENAME.macs2_peaks.narrowPeak.sorted" \
     --bam "$INPUTBAM" \
     --outDir "$OUTPUTDIRECTORY/Peaks/" \
     --chrom_sizes "$REFERENCECHROMOSOMEDIRECTORY/chr22" \
-    --regions_blacklist "$ABCREPOSITORYSRCDIRECTORY/../reference/$CONSENSUSSIGNALARTIFACTFILENAME" \
+    --regions_blacklist "./reference/$CONSENSUSSIGNALARTIFACTFILENAME" \
     --regions_whitelist "$REFERENCECHROMOSOMEDIRECTORY/$REFERENCESEQUENCEBED.TSS500bp.chr22.bed" \
     --peakExtendFromSummit 250 \
     --nStrongestPeaks 3000

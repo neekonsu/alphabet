@@ -94,7 +94,7 @@ echo "——————————————————————"
 echo "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}"
 echo "reference/wgEncodeHg19ConsensusSignalArtifactRegions.bed"
 echo "——————————————————————"
-echo "$(REFERENCECHROMOSOMEDIRECTORY)/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed"
+echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed"
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
 echo "——————————————————————"
 python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \

@@ -37,72 +37,72 @@ cd "${12}"
 # Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
 echo "Verifying arguments for 'macs2 callpeak'"
 echo "——————————————————————"
-echo "$(INPUTBAM)"
+echo "${INPUTBAM}"
 echo "example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"
 echo "——————————————————————"
-echo "$(INPUTFILENAME).chr22.macs2"
+echo "${INPUTFILENAME}.chr22.macs2"
 echo "wgEncodeUwDnaseK562AlnRep1.chr22.macs2"
 echo "——————————————————————"
-echo "$(OUTPUTDIRECTORY)/Peaks/"
+echo "${OUTPUTDIRECTORY}/Peaks/"
 echo "example_chr22/ABC_output/Peaks/"
 echo "——————————————————————"
 macs2 callpeak \
-    -t "$(INPUTBAM)" \
-    -n "$(INPUTFILENAME).chr22.macs2" \
+    -t "${INPUTBAM}" \
+    -n "${INPUTFILENAME}.chr22.macs2" \
     -f BAM \
     -g hs \
     -p .1 \
     --call-summits \
-    --outdir "$(OUTPUTDIRECTORY)/Peaks/"
+    --outdir "${OUTPUTDIRECTORY}/Peaks/"
 
 # Sort narrowPeak file using bedtools
 echo "Verifying arguments for 'bedtools sort -faidx'"
 echo "——————————————————————"
-echo "$(REFERENCECHROMOSOMEDIRECTORY)/chr22"
+echo "${REFERENCECHROMOSOMEDIRECTORY}/chr22"
 echo "example_chr22/reference/chr22"
 echo "——————————————————————"
-echo "$(OUTPUTDIRECTORY)/Peaks/$(INPUTFILENAME).macs2_peaks.narrowPeak"
+echo "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak"
 echo "example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak"
 echo "——————————————————————"
-echo "$(OUTPUTDIRECTORY)/Peaks/$(INPUTFILENAME).macs2_peaks.narrowPeak.sorted"
+echo "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted"
 echo "example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted"
 echo "——————————————————————"
-bedtools sort -faidx "$(REFERENCECHROMOSOMEDIRECTORY)/chr22" \
-    -i "$(OUTPUTDIRECTORY)/Peaks/$(INPUTFILENAME).macs2_peaks.narrowPeak" 
-    > "$(OUTPUTDIRECTORY)/Peaks/$(INPUTFILENAME).macs2_peaks.narrowPeak.sorted"
+bedtools sort -faidx "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
+    -i "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak" 
+    > "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted"
 
 # Define candidate regions using output of sorted ^narrowPeaks^
 # May need to change virtual environments here
 # `nStrongestPeaks` needs calibration. Read ABC documentation for commentary.
 echo "Verifying arguments for 'makeCandidateRegions.py'"
 echo "——————————————————————"
-echo "$(ABCREPOSITORYSRCDIRECTORY)/makeCandidateRegions.py"
+echo "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py"
 echo "src/makeCandidateRegions.py"
 echo "——————————————————————"
-echo "$(OUTPUTDIRECTORY)/Peaks/$(INPUTFILENAME).macs2_peaks.narrowPeak.sorted"
+echo "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted"
 echo "example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted"
 echo "——————————————————————"
-echo "$(INPUTBAM)"
+echo "${INPUTBAM}"
 echo "example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"
 echo "——————————————————————"
-echo "$(OUTPUTDIRECTORY)/Peaks/"
+echo "${OUTPUTDIRECTORY}/Peaks/"
 echo "example_chr22/ABC_output/Peaks/"
 echo "——————————————————————"
-echo "$(REFERENCECHROMOSOMEDIRECTORY)/chr22"
+echo "${REFERENCECHROMOSOMEDIRECTORY}/chr22"
 echo "example_chr22/reference/chr22"
 echo "——————————————————————"
-echo "./reference/$(CONSENSUSSIGNALARTIFACTFILENAME)"
+echo "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}"
 echo "reference/wgEncodeHg19ConsensusSignalArtifactRegions.bed"
 echo "——————————————————————"
-echo "$(REFERENCECHROMOSOMEDIRECTORY)/$(REFERENCESEQUENCEBED).TSS500bp.chr22.bed"
+echo "$(REFERENCECHROMOSOMEDIRECTORY)/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed"
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
 echo "——————————————————————"
-python3 "$(ABCREPOSITORYSRCDIRECTORY)/makeCandidateRegions.py" \
-    --narrowPeak "$(OUTPUTDIRECTORY)/Peaks/$(INPUTFILENAME).macs2_peaks.narrowPeak.sorted" \
-    --bam "$(INPUTBAM)" \
-    --outDir "$(OUTPUTDIRECTORY)/Peaks/" \
-    --chrom_sizes "$(REFERENCECHROMOSOMEDIRECTORY)/chr22" \
-    --regions_blacklist "./reference/$(CONSENSUSSIGNALARTIFACTFILENAME)" \
-    --regions_whitelist "$(REFERENCECHROMOSOMEDIRECTORY)/$(REFERENCESEQUENCEBED).TSS500bp.chr22.bed" \
+python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
+    --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
+    --bam "${INPUTBAM}" \
+    --outDir "${OUTPUTDIRECTORY}/Peaks/" \
+    --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
+    --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
+    --regions_whitelist "$(REFERENCECHROMOSOMEDIRECTORY)/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
     --peakExtendFromSummit 250 \
     --nStrongestPeaks 3000

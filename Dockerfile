@@ -28,7 +28,7 @@ RUN conda install pyranges numpy scipy pandas pybigwig
 RUN rm ./Anaconda3-2020.02-Linux-x86_64.sh
 
 RUN chmod u+x ./alphabet/*.sh
-RUN gunzip -N -S ".chr22.bam" ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam
+# RUN gunzip -r -N -S ".chr22.bam" ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam
 
 EXPOSE 5000
 

@@ -74,7 +74,7 @@ python3 "${ABCREPOSITORYSRCDIRECTORY}/run.neighborhoods.py" \
         --candidate_enhancer_regions "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.candidateRegions.bed" \
         --genes "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.chr22.bed" \
         --H3K27ac "${INPUTDIRECTORY}/${INPUTBAMFORNEIGHBORHOODS}" \
-        --DHS "${INPUTDIRECTORY}/${INPUTFILENAME}.chr22.bam,${INPUTDIRECTORY}/${INPUTFILENAME%?}2.chr22.bam" \
+        --DHS "${INPUTBAM},${INPUTDIRECTORY}/${INPUTFILENAME%Rep1.chr22}Rep2.chr22.bam" \
         --expression_table "${INPUTDIRECTORY}/../Expression/${EXPRESSIONTABLETXT}" \
         --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
         --ubiquitously_expressed_genes "./reference/${UBIQUITOUSLYEXPRESSEDGENESTXT}" \

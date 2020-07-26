@@ -69,7 +69,6 @@ func main() {
 	}
 	fmt.Println("\nAll arguments set, waiting 3 seconds before starting stage 1 ...")
 	time.Sleep(3 * time.Second)
-	fmt.Println("Continuing with stage 1.\nStage 1 may take 30s—1min to begin, please be patient.")
 	alphabet.StageOne(&Args)
 	fmt.Print("\n. . . Moving on to stage 2, please wait . . . \n\n")
 	time.Sleep(3 * time.Second)

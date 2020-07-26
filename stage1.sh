@@ -103,6 +103,6 @@ python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
     --outDir "${OUTPUTDIRECTORY}/Peaks/" \
     --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
     --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
-    --regions_whitelist "$(REFERENCECHROMOSOMEDIRECTORY)/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
+    --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
     --peakExtendFromSummit 250 \
     --nStrongestPeaks 3000

@@ -4,7 +4,7 @@
 
 # Base filename for the input bam file it MACS2 (sliced extension)
 INPUTFILENAME=$(basename "${1%.*}")
-INPUTDIRECTORY="dirname $1"
+INPUTDIRECTORY=$(dirname $1)
 # Input bam file for MACS2
 # ex: (./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam)
 INPUTBAM=$1
@@ -59,7 +59,7 @@ echo "——————————————————————"
 echo "${REFERENCECHROMOSOMEDIRECTORY}/chr22"
 echo "example_chr22/reference/chr22"
 echo "——————————————————————"
-echo "${ABCREPOSITORYSRCDIRECTORY}/../reference/${UBIQUITOUSLYEXPRESSEDGENESTXT}"
+echo "./reference/${UBIQUITOUSLYEXPRESSEDGENESTXT}"
 echo "reference/UbiquitouslyExpressedGenesHG19.txt"
 echo "——————————————————————"
 echo "${CELLTYPEIDENTIFIER}"
@@ -75,6 +75,6 @@ python3 "${ABCREPOSITORYSRCDIRECTORY}/run.neighborhoods.py" \
         --DHS "${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME}.chr22.bam,${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME%?}2.chr22.bam" \
         --expression_table "${INPUTDIRECTORY}/Expression/${EXPRESSIONTABLETXT}" \
         --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
-        --ubiquitously_expressed_genes "${ABCREPOSITORYSRCDIRECTORY}/../reference/${UBIQUITOUSLYEXPRESSEDGENESTXT}" \
+        --ubiquitously_expressed_genes "./reference/${UBIQUITOUSLYEXPRESSEDGENESTXT}" \
         --cellType "${CELLTYPEIDENTIFIER}" \
         --outdir "${OUTPUTDIRECTORY}/Neighborhoods/"

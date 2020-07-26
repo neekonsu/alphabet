@@ -2,7 +2,7 @@
 
 # Input data directory for MACS2
 # ex: (./example_chr22/input_data/Chromatin)
-INPUTDIRECTORY="dirname $1"
+INPUTDIRECTORY=$(dirname $1)
 # Output directory for MACS2, input for bedtools
 # ex: (./example_chr22/ABC_output)
 OUTPUTDIRECTORY=$2

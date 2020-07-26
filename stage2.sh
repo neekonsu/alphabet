@@ -4,6 +4,8 @@
 
 # Base filename for the input bam file it MACS2 (sliced extension)
 INPUTFILENAME=$(basename "${1%.*}")
+# Directory of input (chromatin) data
+# ex: (./example_chr22/input_data/Chromatin)
 INPUTDIRECTORY=$(dirname $1)
 # Input bam file for MACS2
 # ex: (./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam)
@@ -47,7 +49,7 @@ echo "——————————————————————"
 echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.chr22.bed"
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.chr22.bed"
 echo "——————————————————————"
-echo "${INPUTDIRECTORY}/Chromatin/${INPUTBAMFORNEIGHBORHOODS}"
+echo "${INPUTDIRECTORY}/${INPUTBAMFORNEIGHBORHOODS}"
 echo "example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam"
 echo "——————————————————————"
 echo "${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME}.chr22.bam,${INPUTDIRECTORY}/Chromatin/${INPUTFILENAME%?}2.chr22.bam"

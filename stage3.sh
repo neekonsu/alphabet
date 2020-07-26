@@ -30,7 +30,7 @@ echo "——————————————————————"
 echo "${OUTPUTDIRECTORY}/Neighborhoods/GeneList.txt"
 echo "example_chr22/ABC_output/Neighborhoods/GeneList.txt"
 echo "——————————————————————"
-echo "${INPUTDIRECTORY}/HiC/raw/"
+echo "${INPUTDIRECTORY}/../HiC/raw/"
 echo "example_chr22/input_data/HiC/raw/"
 echo "——————————————————————"
 echo "${HICRESOLUTION}"
@@ -45,7 +45,7 @@ echo "——————————————————————"
 python3 "${ABCREPOSITORYSRCDIRECTORY}/predict.py" \
         --enhancers "${OUTPUTDIRECTORY}/Neighborhoods/EnhancerList.txt" \
         --genes "${OUTPUTDIRECTORY}/Neighborhoods/GeneList.txt" \
-        --HiCdir "${INPUTBAM}/HiC/raw/" \
+        --HiCdir "${INPUTDIRECTORY}/../HiC/raw/" \
         --hic_resolution "${HICRESOLUTION}" \
         --scale_hic_using_powerlaw \
         --threshold .02 \

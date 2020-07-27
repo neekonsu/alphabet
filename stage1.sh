@@ -108,6 +108,7 @@ echo "——————————————————————"
 echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed"
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
 echo "——————————————————————"
+cd ${12}
 python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
     --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
     --bam "${INPUTBAM}" \

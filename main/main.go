@@ -76,5 +76,4 @@ func main() {
 	fmt.Print("\n. . . Moving on to stage 3, please wait . . . \n\n")
 	time.Sleep(3 * time.Second)
 	alphabet.StageThree(&Args)
-
 }

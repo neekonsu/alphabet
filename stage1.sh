@@ -109,15 +109,15 @@ echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
 echo "——————————————————————"
 cd ${12}
-python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
-    --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
-    --bam "${INPUTBAM}" \
-    --outDir "${OUTPUTDIRECTORY}/Peaks/" \
-    --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
-    --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
-    --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
-    --peakExtendFromSummit 250 \
-    --nStrongestPeaks 3000
+# python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
+#     --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
+#     --bam "${INPUTBAM}" \
+#     --outDir "${OUTPUTDIRECTORY}/Peaks/" \
+#     --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
+#     --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
+#     --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
+#     --peakExtendFromSummit 250 \
+#     --nStrongestPeaks 3000
 
 awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' \
 ${REFERENCECHROMOSOMEDIRECTORY}/chr22 \

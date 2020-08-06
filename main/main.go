@@ -44,6 +44,7 @@ func main() {
 			"../ABC-Enhancer-Gene-Prediction"},
 	}
 	// Greet user
+	fmt.Println("\n——————————————————————————————————————————————")
 	fmt.Println("##### Alphabet, the ABC pipeline wrapper #####")
 	fmt.Print("——————————————————————————————————————————————\n\n")
 	timeout := time.After(60 * 9 * time.Second)

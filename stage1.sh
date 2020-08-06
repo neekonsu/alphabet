@@ -109,15 +109,15 @@ echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
 echo "——————————————————————"
 cd ${12}
-python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
-    --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
-    --bam "${INPUTBAM}" \
-    --outDir "${OUTPUTDIRECTORY}/Peaks/" \
-    --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
-    --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
-    --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
-    --peakExtendFromSummit 250 \
-    --nStrongestPeaks 3000
+# python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
+#     --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
+#     --bam "${INPUTBAM}" \
+#     --outDir "${OUTPUTDIRECTORY}/Peaks/" \
+#     --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
+#     --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
+#     --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
+#     --peakExtendFromSummit 250 \
+#     --nStrongestPeaks 3000
 
 # awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' \
 # ${REFERENCECHROMOSOMEDIRECTORY}/chr22 <(samtools view -H ${INPUTBAM} | grep SQ | cut -f 2 | cut -c 4- )  > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
@@ -132,3 +132,5 @@ python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
 # | bedtools sort -faidx ${REFERENCECHROMOSOMEDIRECTORY}/chr22 -i stdin \
 # > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed; \
 # rm ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
+
+bedtools bamtobed -i ./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | cut -f 1-3 | bedtools intersect -wa -a stdin -b ./example_chr22/reference/chr22.bed | bedtools sort -i stdin -faidx ./example_chr22/reference/chr22 | bedtools coverage -g ./example_chr22/reference/chr22 -counts -sorted -a ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted -b stdin | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}' > ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.wgEncodeUwDnaseK562AlnRep1.chr22.bam.Counts.bed

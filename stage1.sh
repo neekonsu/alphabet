@@ -118,12 +118,12 @@ cd ${12}
 #     --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
 #     --peakExtendFromSummit 250 \
 #     --nStrongestPeaks 3000
-
-# exec awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' \
-# ${REFERENCECHROMOSOMEDIRECTORY}/chr22 <(samtools view -H ${INPUTBAM} | grep SQ | cut -f 2 | cut -c 4- )  > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
-exec awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' ./example_chr22/reference/chr22 <(samtools view -H ./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.wgEncodeUwDnaseK562AlnRep1.chr22.bam.Counts.bed.temp_sort_order
-
-exec bedtools sort -faidx ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order \
+echo "Executing awk"
+awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' \
+${REFERENCECHROMOSOMEDIRECTORY}/chr22 <(samtools view -H ${INPUTBAM} | grep SQ | cut -f 2 | cut -c 4- )  > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
+# awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' ./example_chr22/reference/chr22 <(samtools view -H ./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.wgEncodeUwDnaseK562AlnRep1.chr22.bam.Counts.bed.temp_sort_order
+echo "Executing bedtools sort"
+bedtools sort -faidx ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order \
 -i ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted \
 | bedtools coverage \
 -g ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order -counts -sorted -a stdin \
@@ -132,5 +132,5 @@ exec bedtools sort -faidx ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.
 | bedtools sort -faidx ${REFERENCECHROMOSOMEDIRECTORY}/chr22 -i stdin \
 > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed; \
 rm ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
-
+echo "Done sorting!"
 # exec bedtools bamtobed -i ./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | cut -f 1-3 | bedtools intersect -wa -a stdin -b ./example_chr22/reference/chr22.bed | bedtools sort -i stdin -faidx ./example_chr22/reference/chr22 | bedtools coverage -g ./example_chr22/reference/chr22 -counts -sorted -a ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted -b stdin | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}' > ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.wgEncodeUwDnaseK562AlnRep1.chr22.bam.Counts.bed

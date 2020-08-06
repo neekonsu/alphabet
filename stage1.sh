@@ -120,9 +120,7 @@ cd ${12}
 #     --nStrongestPeaks 3000
 
 awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' \
-${REFERENCECHROMOSOMEDIRECTORY}/chr22 \
-<(samtools view -H ${INPUTBAM} | grep SQ | cut -f 2 | cut -c 4- )  \
-> ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
+${REFERENCECHROMOSOMEDIRECTORY}/chr22 <(samtools view -H ${INPUTBAM} | grep SQ | cut -f 2 | cut -c 4- )  > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
 
 bedtools sort -faidx ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order \
 -i ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted \

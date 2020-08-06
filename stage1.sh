@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # TODO: Provide example path/filename in each comment of each variable
 # TODO: attempt to eliminate more static paths by creating new variables

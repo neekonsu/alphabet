@@ -12,7 +12,7 @@ INPUTBAM=$1
 # ex: (./example_chr22/ABC_output)
 OUTPUTDIRECTORY=$2
 # Directory of reference chromosome, located inside ABC git repo
-# ex: (./example_chr22/reference/chr22)
+# ex: (./example_chr22/reference)
 REFERENCECHROMOSOMEDIRECTORY=$3
 # Directory of all python scripts/sourcecode in ABC git repo
 # ex: (./src)
@@ -132,5 +132,6 @@ bedtools sort -faidx ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narro
 | bedtools sort -faidx ${REFERENCECHROMOSOMEDIRECTORY}/chr22 -i stdin \
 > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed; \
 rm ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
+echo "Running bamtobed"
+bedtools bamtobed -i .${INPUTBAM} | cut -f 1-3 | bedtools intersect -wa -a stdin -b ${REFERENCESEQUENCEBED} | bedtools sort -i stdin -faidx ${REFERENCECHROMOSOMEDIRECTORY}/chr22 | bedtools coverage -g ${REFERENCECHROMOSOMEDIRECTORY}/chr22 -counts -sorted -a ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted -b stdin | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}' > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed
 echo "Done sorting!"
-# exec bedtools bamtobed -i ./example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | cut -f 1-3 | bedtools intersect -wa -a stdin -b ./example_chr22/reference/chr22.bed | bedtools sort -i stdin -faidx ./example_chr22/reference/chr22 | bedtools coverage -g ./example_chr22/reference/chr22 -counts -sorted -a ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted -b stdin | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}' > ./example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.wgEncodeUwDnaseK562AlnRep1.chr22.bam.Counts.bed

@@ -132,6 +132,6 @@ bedtools sort -faidx ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narro
 | bedtools sort -faidx ${REFERENCECHROMOSOMEDIRECTORY}/chr22 -i stdin \
 > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed; \
 rm ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order
-echo "Running bamtobed"
-bedtools bamtobed -i .${INPUTBAM} | cut -f 1-3 | bedtools intersect -wa -a stdin -b ${REFERENCESEQUENCEBED} | bedtools sort -i stdin -faidx ${REFERENCECHROMOSOMEDIRECTORY}/chr22 | bedtools coverage -g ${REFERENCECHROMOSOMEDIRECTORY}/chr22 -counts -sorted -a ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted -b stdin | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}' > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed
+# echo "Running bamtobed"
+# bedtools bamtobed -i .${INPUTBAM} | cut -f 1-3 | bedtools intersect -wa -a stdin -b ${REFERENCESEQUENCEBED} | bedtools sort -i stdin -faidx ${REFERENCECHROMOSOMEDIRECTORY}/chr22 | bedtools coverage -g ${REFERENCECHROMOSOMEDIRECTORY}/chr22 -counts -sorted -a ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted -b stdin | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}' > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed
 echo "Done sorting!"

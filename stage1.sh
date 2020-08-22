@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#TODO: test makeCandidateRegions.py now that shebang points to bash instead of sh 
-
 # Base filename for the input bam file it MACS2 (sliced extension)
 INPUTFILENAME=$(basename "${1%.*}")
 # Input bam file for MACS2

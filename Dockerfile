@@ -8,7 +8,7 @@ COPY ./dependencies.conf ./dependencies.conf
 RUN export DEBIAN_FRONTEND=noninteractive
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update -y
-RUN apt install -y -q $(cat dependencies.conf) --fix-missing
+RUN apt install -y -q "$(cat dependencies.conf)" --fix-missing
 RUN rm ./dependencies.conf
 
 RUN git clone https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction

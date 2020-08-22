@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# TODO: Provide example path/filename in each comment of each variable
-# TODO: attempt to eliminate more static paths by creating new variables
+#TODO: credit to BroadInstitute
 
 # Base filename for the input bam file it MACS2 (sliced extension)
 INPUTFILENAME=$(basename "${1%.*}")
@@ -44,6 +43,23 @@ echo "Wait 3 seconds . . . "
 sleep 3
 echo "Setting working directory to ${12}"
 cd "${12}"
+
+# Unzip Juicer Tools
+gunzip -k juicer-16.tar.gz
+#Download hic matrix file from juicebox
+python ${ABCREPOSITORYSRCDIRECTORY}/juicebox_dump.py \
+--hic_file https://hicfiles.s3.amazonaws.com/hiseq/k562/in-situ/combined_30.hic \
+--juicebox "java -jar juicer_tools.jar" \
+--outdir example_chr22/input_data/HiC/raw/ \
+--chromosomes 22
+#Fit HiC data to powerlaw model and extract parameters
+python src/compute_powerlaw_fit_from_hic.py \
+--hicDir example_chr22/input_data/HiC/raw/ \
+--outDir example_chr22/input_data/HiC/raw/powerlaw/ \
+--maxWindow 1000000 \
+--minWindow 5000 \
+--resolution 5000 \
+--chr 'chr22'
 
 # Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
 echo "Verifying arguments for 'macs2 callpeak'"
@@ -109,6 +125,7 @@ echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
 echo "——————————————————————"
 cd ${12}
+
 # python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
 #     --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
 #     --bam "${INPUTBAM}" \
@@ -118,6 +135,7 @@ cd ${12}
 #     --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
 #     --peakExtendFromSummit 250 \
 #     --nStrongestPeaks 3000
+
 echo "Executing awk"
 awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' \
 ${REFERENCECHROMOSOMEDIRECTORY}/chr22 <(samtools view -H ${INPUTBAM} | grep SQ | cut -f 2 | cut -c 4- )  > ${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted.${INPUTFILENAME}.bam.Counts.bed.temp_sort_order

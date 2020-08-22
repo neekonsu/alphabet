@@ -4,6 +4,30 @@
 ###     The Activity By Contact pipeline wrapper
 ## In order for the pipeline to function properly, please adhere to the filestructure defined in https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
 ## Check https://hub.docker.com/repository/docker/neekonsu/abc_pipeline/general for docker container preloaded with pipeline and template filestructure as well as example data
+# Credit
+## All credit for the ABC-Gene-Enhancer-Prediction tool that we implemented along with several several parts of the readme goes to the Broad Institute, to jnasser and his collaborators who created the original pipeline.
+# Dependencies
+### Please ensure that the following dependencies are satisfied if you are not running inside of the official Docker container:
+```
+Python (3.6.4)
+samtools (0.1.19)
+bedtools (2.26.0)
+Tabix (0.2.5) - Partial dependancy
+MACS2 (2.1.1.20160309) - Partial dependancy
+Java (1.8) - Partial dependancy
+Juicer Tools (1.7.5) - Partial dependancy
+
+Python packages:
+pyranges (0.0.55)
+numpy (1.15.2)
+pandas (0.23.4)
+scipy (0.18.1)
+pyBigWig (0.3.2) - Partial dependancy
+
+Other Packages:
+CUDA (8.0) - Do not upgrade from this version
+Latest packages as listed in 'dependencies.conf'
+```
 # How to run:
 ## With git repository:
 ### Direct execution:

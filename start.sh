@@ -2,4 +2,4 @@
 
 cd alphabet && \
 git pull origin master && \
-go run "main/main.go"
+./alphabet/main/alphabet

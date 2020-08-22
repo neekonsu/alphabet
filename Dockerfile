@@ -1,4 +1,4 @@
-FROM nvidia/cuda:latest
+FROM nvidia/cuda:10.2-cudnn8-runtime-ubuntu18.04
 
 RUN mkdir -p /go/src/github.com/neekonsu
 WORKDIR /go/src/github.com/neekonsu

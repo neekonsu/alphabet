@@ -1,4 +1,4 @@
 # Mandatory
-## change base Docker container from go-official to any CUDA-embedding container
+## Debug makeCandidateRegions.py
 # Soft-TODOs
 ## Test makeCandidateRegions.py now that shebang points to bash instead of sh 

@@ -26,6 +26,8 @@ pyBigWig (0.3.2) - Partial dependancy
 
 Other Packages:
 CUDA (8.0) - Do not upgrade from this version
+Docker (19.03)
+Nvidia Drivers (latest)
 Latest packages as listed in 'dependencies.conf'
 ```
 # How to run:

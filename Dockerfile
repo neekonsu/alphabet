@@ -1,4 +1,4 @@
-FROM golang:1.14
+FROM nvidia/cuda:latest
 
 RUN mkdir -p /go/src/github.com/neekonsu
 WORKDIR /go/src/github.com/neekonsu

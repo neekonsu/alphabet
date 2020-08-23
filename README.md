@@ -2,8 +2,8 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4654a52a731f4e12aedcb9a38897d0e4)](https://www.codacy.com/manual/neekonsu/alphabet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=neekonsu/alphabet&amp;utm_campaign=Badge_Grade)
 # Alphabet
 ## The Activity By Contact pipeline wrapper
-## In order for the pipeline to function properly, please adhere to the filestructure defined in https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
-## Check https://hub.docker.com/repository/docker/neekonsu/alphabet/general for docker container preloaded with pipeline and template filestructure as well as example data
+## In order for the pipeline to function properly, please adhere to the filestructure defined in (https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction)
+## Check (https://hub.docker.com/repository/docker/neekonsu/alphabet/general) for docker container preloaded with pipeline and template filestructure as well as example data
 # Credit
 ## All credit for the ABC-Gene-Enhancer-Prediction tool that we implemented along with several several parts of the readme goes to the Broad Institute, to jnasser and his collaborators who created the original pipeline.
 # Dependencies

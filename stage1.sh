@@ -51,7 +51,6 @@ python ${12}/src/juicebox_dump.py \
 --juicebox "java -jar /alphabet/juicer_tools.jar" \
 --outdir ${12}/example_chr22/input_data/HiC/raw \
 --chromosomes 22
---skip_gzip true
 #Fit HiC data to powerlaw model and extract parameters
 python ${12}/src/compute_powerlaw_fit_from_hic.py \
 --hicDir ${12}/example_chr22/input_data/HiC/raw \

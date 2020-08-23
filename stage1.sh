@@ -43,13 +43,13 @@ echo "Setting working directory to ${12}"
 cd "${12}"
 
 #Download hic matrix file from juicebox
-python ${ABCREPOSITORYSRCDIRECTORY}/juicebox_dump.py \
+python ./src/juicebox_dump.py \
 --hic_file https://hicfiles.s3.amazonaws.com/hiseq/k562/in-situ/combined_30.hic \
---juicebox "java -jar juicer_tools.jar" \
+--juicebox "java -jar ../alphabet/juicer_tools.jar" \
 --outdir example_chr22/input_data/HiC/raw/ \
 --chromosomes 22
 #Fit HiC data to powerlaw model and extract parameters
-python ${ABCREPOSITORYSRCDIRECTORY}/compute_powerlaw_fit_from_hic.py \
+python ./src/compute_powerlaw_fit_from_hic.py \
 --hicDir example_chr22/input_data/HiC/raw/ \
 --outDir example_chr22/input_data/HiC/raw/powerlaw/ \
 --maxWindow 1000000 \

@@ -1,0 +1,3 @@
+[submodule "ABC-Enhancer-Gene-Prediction"]
+	path = ABC-Enhancer-Gene-Prediction
+	url = https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction

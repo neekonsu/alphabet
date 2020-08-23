@@ -8,8 +8,7 @@ RUN apt update -y
 RUN apt install -y -q $(cat dependencies.conf) --fix-missing
 RUN rm ./dependencies.conf
 
-RUN git clone https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction
-RUN git clone  https://github.com/neekonsu/alphabet
+RUN git clone --recurse-submodules https://github.com/neekonsu/alphabet
 RUN git clone https://github.com/neekonsu/juicer
 
 RUN curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh

@@ -53,7 +53,7 @@
 ### 1. Define candidate enhancer regions
 #### a. Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
 #### b. Process ^peaks^ using 'makeCandidateRegions.py'
-##### 1. Input 'narrowPeak' file output by ^MACS2^ to 'makeCandidateRegions.py'; this will execute the following:
+##### 1. Input 'narrowPeak' file output by ^MACS2^ to 'makeCandidateRegions.py'; this will execute the following
 ###### 1. Count DNase-seq reads in each peak and retain the top N peaks with the most read counts
 ###### 2. Resize each of these N peaks to be a fixed number of base pairs centered on the peak summit
 ###### 3. Remove any blacklisted regions and include any whitelisted regions

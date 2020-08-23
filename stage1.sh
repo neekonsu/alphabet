@@ -120,7 +120,7 @@ echo "——————————————————————"
 echo "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed"
 echo "example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed"
 echo "——————————————————————"
-cd ${12}
+cd "${12}"
 
 #######MAKE CANDIDATE REGIONS#############
 # The makeCandidateRegions.py script is not working.

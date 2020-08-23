@@ -15,9 +15,7 @@ CELLTYPEIDENTIFIER=${10}
 # HiC resolution argument
 # ex: (5000)
 HICRESOLUTION=${11}
-
-WD=${12}
-cd $WD
+cd "${12}"
 
 echo "Verifying arguments for run.neighborhoods.py"
 echo "——————————————————————"

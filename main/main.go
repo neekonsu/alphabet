@@ -41,7 +41,7 @@ func main() {
 		Question{"HiC resolution for predict.py",
 			"5000"},
 		Question{"Path to ABC-Enhancer-Gene-Prediction repository (directory)",
-			"../ABC-Enhancer-Gene-Prediction"},
+			"./alphabet/ABC-Enhancer-Gene-Prediction"},
 	}
 	// Greet user
 	fmt.Println("\n——————————————————————————————————————————————")

@@ -2,12 +2,12 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4654a52a731f4e12aedcb9a38897d0e4)](https://www.codacy.com/manual/neekonsu/alphabet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=neekonsu/alphabet&amp;utm_campaign=Badge_Grade)
 # Alphabet
 ## The Activity By Contact pipeline wrapper
-## In order for the pipeline to function properly, please adhere to the filestructure defined in (https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction)
-## Check (https://hub.docker.com/repository/docker/neekonsu/alphabet/general) for docker container preloaded with pipeline and template filestructure as well as example data
-# Credit
-## All credit for the ABC-Gene-Enhancer-Prediction tool that we implemented along with several several parts of the readme goes to the Broad Institute, to jnasser and his collaborators who created the original pipeline.
-# Dependencies
-## Please ensure that the following dependencies are satisfied if you are not running inside of the official Docker container:
+## In order for the pipeline to function properly, please adhere to the filestructure defined in (<https://github.com/neekonsu/ABC-Enhancer-Gene-Prediction>)
+## Check (<https://hub.docker.com/repository/docker/neekonsu/alphabet/general>) for docker container preloaded with pipeline and template filestructure as well as example data
+## Credit
+### All credit for the ABC-Gene-Enhancer-Prediction tool that we implemented along with several several parts of the readme goes to the Broad Institute, to jnasser and his collaborators who created the original pipeline.
+## Dependencies
+### Please ensure that the following dependencies are satisfied if you are not running inside of the official Docker container:
 ```
 Python (3.6.4)
 samtools (0.1.19)
@@ -30,23 +30,23 @@ Docker (19.03)
 Nvidia Drivers (latest)
 Latest packages as listed in 'dependencies.conf'
 ```
-# How to run:
-## With git repository:
-### Direct execution:
+## How to run:
+### With git repository:
+#### Direct execution:
         |$⟩ mkdir -p ./go/src/github.com/neekonsu
         |$⟩ cd ./go/src/github.com/neekonsu
         |$⟩ git clone https://github.com/neekonsu/Alphabet.git
         |$⟩ cd Alphabet
         |$⟩ chmod +x stage1.sh stage2.sh stage3.sh
         |$⟩ go run main/main.go
-### Containerized execution:
+#### Containerized execution:
         |$⟩ mkdir -p ./go/src/github.com/neekonsu
         |$⟩ cd ./go/src/github.com/neekonsu
         |$⟩ git clone https://github.com/neekonsu/Alphabet.git
         |$⟩ cd Alphabet
         |$⟩ docker build . -t alphabet:latest
         |$⟩ docker container run -it --rm --gpus all --name Nickname alphabet:latest
-## With Docker Container:
+### With Docker Container:
         |$⟩ docker pull neekonsu/abc_pipeline:latest
         |$⟩ docker container run -it --rm --gpus all --name Nickname neekonsu/abc_pipeline:latest
 ## Pipeline Procedure and Notes:

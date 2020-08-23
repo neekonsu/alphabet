@@ -46,12 +46,12 @@ cd "${12}"
 python ./src/juicebox_dump.py \
 --hic_file https://hicfiles.s3.amazonaws.com/hiseq/k562/in-situ/combined_30.hic \
 --juicebox "java -jar /alphabet/juicer_tools.jar" \
---outdir ${12}/example_chr22/input_data/HiC/raw/ \
+--outdir ${12}/example_chr22/input_data/HiC/raw \
 --chromosomes 22
 #Fit HiC data to powerlaw model and extract parameters
 python ${12}/src/compute_powerlaw_fit_from_hic.py \
---hicDir ${12}/example_chr22/input_data/HiC/raw/ \
---outDir ${12}/example_chr22/input_data/HiC/raw/powerlaw/ \
+--hicDir ${12}/example_chr22/input_data/HiC/raw \
+--outDir ${12}/example_chr22/input_data/HiC/raw/powerlaw \
 --maxWindow 1000000 \
 --minWindow 5000 \
 --resolution 5000 \

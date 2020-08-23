@@ -43,7 +43,7 @@ echo "Setting working directory to ${12}"
 cd "${12}"
 
 #Download hic matrix file from juicebox
-python ./src/juicebox_dump.py \
+python ${12}/src/juicebox_dump.py \
 --hic_file https://hicfiles.s3.amazonaws.com/hiseq/k562/in-situ/combined_30.hic \
 --juicebox "java -jar /alphabet/juicer_tools.jar" \
 --outdir ${12}/example_chr22/input_data/HiC/raw \

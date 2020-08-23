@@ -24,4 +24,4 @@ RUN rm ./Anaconda3-2020.02-Linux-x86_64.sh
 
 RUN echo "sh /alphabet/helper/start.sh" >> /root/.bashrc
 
-RUN chmod +x ./alphabet/helper/*.sh
+RUN chmod +x /alphabet/helper/*.sh

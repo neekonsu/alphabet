@@ -72,14 +72,14 @@ echo "——————————————————————"
 echo "${OUTPUTDIRECTORY}/Peaks/"
 echo "example_chr22/ABC_output/Peaks/"
 echo "——————————————————————"
-# macs2 callpeak \
-#     -t "${INPUTBAM}" \
-#     -n "${INPUTFILENAME}.chr22.macs2" \
-#     -f BAM \
-#     -g hs \
-#     -p .1 \
-#     --call-summits \
-#     --outdir "${OUTPUTDIRECTORY}/Peaks/"
+macs2 callpeak \
+    -t "${INPUTBAM}" \
+    -n "${INPUTFILENAME}.chr22.macs2" \
+    -f BAM \
+    -g hs \
+    -p .1 \
+    --call-summits \
+    --outdir "${OUTPUTDIRECTORY}/Peaks/"
 
 # Sort narrowPeak file using bedtools
 echo "Verifying arguments for 'bedtools sort -faidx'"
@@ -93,9 +93,9 @@ echo "——————————————————————"
 echo "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted"
 echo "example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted"
 echo "——————————————————————"
-# bedtools sort -faidx "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
-#     -i "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak" 
-#     > "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted"
+bedtools sort -faidx "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
+    -i "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak" 
+    > "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted"
 
 # Define candidate regions using output of sorted ^narrowPeaks^
 # May need to change virtual environments here
@@ -132,15 +132,15 @@ cd "${12}"
 # to work since it isn't clear if the printout included all of the details
 # of execution. Mandatory debug
 ###############END NOTE###################
-# python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
-#     --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
-#     --bam "${INPUTBAM}" \
-#     --outDir "${OUTPUTDIRECTORY}/Peaks/" \
-#     --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
-#     --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
-#     --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
-#     --peakExtendFromSummit 250 \
-#     --nStrongestPeaks 3000
+python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
+    --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
+    --bam "${INPUTBAM}" \
+    --outDir "${OUTPUTDIRECTORY}/Peaks/" \
+    --chrom_sizes "${REFERENCECHROMOSOMEDIRECTORY}/chr22" \
+    --regions_blacklist "./reference/${CONSENSUSSIGNALARTIFACTFILENAME}" \
+    --regions_whitelist "${REFERENCECHROMOSOMEDIRECTORY}/${REFERENCESEQUENCEBED}.TSS500bp.chr22.bed" \
+    --peakExtendFromSummit 250 \
+    --nStrongestPeaks 3000
 
 # echo "Executing awk"
 # awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' \

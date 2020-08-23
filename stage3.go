@@ -10,7 +10,7 @@ import (
 func StageThree(args *[]string) {
 	// Spawn shell command for `stage1.sh` script
 	stage1 := &exec.Cmd{
-		Path:   "./stage3.sh",
+		Path:   "../stage3.sh",
 		Args:   (*args),
 		Stdout: os.Stdout,
 		Stderr: os.Stdout,

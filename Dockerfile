@@ -22,6 +22,6 @@ RUN conda init bash
 RUN conda install pyranges numpy scipy pandas pybigwig
 RUN rm ./Anaconda3-2020.02-Linux-x86_64.sh
 
-RUN echo "sh $HOME/alphabet/helper/start.sh" >> /root/.bashrc
+RUN echo "sh /alphabet/helper/start.sh" >> /root/.bashrc
 
 RUN chmod +x ./alphabet/helper/*.sh

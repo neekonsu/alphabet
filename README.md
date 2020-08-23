@@ -7,7 +7,7 @@
 ## Credit
 ### All credit for the ABC-Gene-Enhancer-Prediction tool that we implemented along with several several parts of the readme goes to the Broad Institute, to jnasser and his collaborators who created the original pipeline
 ## Dependencies
-### Please ensure that the following dependencies are satisfied if you are not running inside of the official Docker container:
+### Please ensure that the following dependencies are satisfied if you are not running inside of the official Docker container
 
     Python (3.6.4)
     samtools (0.1.19)
@@ -30,26 +30,26 @@
     Nvidia Drivers (latest)
     Latest packages as listed in 'dependencies.conf'
 
-## How to run:
-### With git repository:
-#### Direct execution:
+## How to run
+### With git repository
+#### Direct execution
     |$⟩ mkdir -p ./go/src/github.com/neekonsu
     |$⟩ cd ./go/src/github.com/neekonsu
     |$⟩ git clone https://github.com/neekonsu/Alphabet.git
     |$⟩ cd Alphabet
     |$⟩ chmod +x stage1.sh stage2.sh stage3.sh
     |$⟩ go run main/main.go
-#### Containerized execution:
+#### Containerized execution
     |$⟩ mkdir -p ./go/src/github.com/neekonsu
     |$⟩ cd ./go/src/github.com/neekonsu
     |$⟩ git clone https://github.com/neekonsu/Alphabet.git
     |$⟩ cd Alphabet
     |$⟩ docker build . -t alphabet:latest
     |$⟩ docker container run -it --rm --gpus all --name Nickname alphabet:latest
-### With Docker Container:
+### With Docker Container
         |$⟩ docker pull neekonsu/abc_pipeline:latest
         |$⟩ docker container run -it --rm --gpus all --name Nickname neekonsu/abc_pipeline:latest
-## Pipeline Procedure and Notes:
+## Pipeline Procedure and Notes
 ### 1. Define candidate enhancer regions
 #### a. Call peaks on a DNase-seq or ATAC-seq bam file using MACS2
 #### b. Process ^peaks^ using 'makeCandidateRegions.py'
@@ -58,7 +58,7 @@
 ###### 2. Resize each of these N peaks to be a fixed number of base pairs centered on the peak summit
 ###### 3. Remove any blacklisted regions and include any whitelisted regions
 ###### 4. Merge any overlapping regions
-##### 2. Example command for ^step 1^:
+##### 2. Example command for ^step 1^
 ###### 1. MACS2
     macs2 callpeak \
     -t example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam \
@@ -84,7 +84,7 @@
     --nStrongestPeaks 3000
     #Check "### Step 1. Define candidate elements" in README.md of 'ABC-Enhancer-Gene-Prediction' for commentary on methods
 ### 2. Quantify enhancer activity
-#### a. Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command:
+#### a. Input DNase-Seq/ATAC-Seq & H3K27ac ChIP-Seq reads to 'run.neighborhoods.py'; following is example command
     python src/run.neighborhoods.py \
     --candidate_enhancer_regions example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed \
     --genes example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.chr22.bed \
@@ -95,11 +95,11 @@
     --ubiquitously_expressed_genes reference/UbiquitouslyExpressedGenesHG19.txt \
     --cellType K562 \
     --outdir example_chr22/ABC_output/Neighborhoods/ 
-#### b. ^'run.neighborhoods.py'^ returns 2 files:
+#### b. ^'run.neighborhoods.py'^ returns 2 files
     1. **EnhancerList.txt**: Candidate enhancer regions with Dnase-seq and H3K27ac ChIP-seq read counts
     2. **GeneList.txt**: Dnase-seq and H3K27ac ChIP-seq read counts on gene bodies and gene promoter regions
 ### 3. Compute ABC Scores
-#### a. Input all ouput of ^'run.neighborhoods.py'^ to 'predict.py'; following is example command:
+#### a. Input all ouput of ^'run.neighborhoods.py'^ to 'predict.py'; following is example command
     python src/predict.py \
     --enhancers example_chr22/ABC_output/Neighborhoods/EnhancerList.txt \
     --genes example_chr22/ABC_output/Neighborhoods/GeneList.txt \
@@ -110,7 +110,7 @@
     --cellType K562 \
     --outdir example_chr22/ABC_output/Predictions/ \
     --make_all_putative
-#### b. ^'predict.py'^ returns 5 files:
+#### b. ^'predict.py'^ returns 5 files
     1. **EnhancerPredictions.txt**: all element-gene pairs with scores above the provided threshold.
         Only includes expressed genes and does not include promoter elements. 
         This file defines the set of 'positive' predictions of the ABC model.

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd alphabet && \
 git pull origin master && \

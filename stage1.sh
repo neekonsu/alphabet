@@ -43,11 +43,15 @@ echo "Setting working directory to ${12}"
 cd "${12}"
 
 #Download hic matrix file from juicebox
+# The strange part here is that while the example commands assume the files begin uncompressed,
+# the ABC repository has them pre-gzipped, which causes issues when the commands do not specify
+# 'skip_gzip true'
 python ${12}/src/juicebox_dump.py \
 --hic_file https://hicfiles.s3.amazonaws.com/hiseq/k562/in-situ/combined_30.hic \
 --juicebox "java -jar /alphabet/juicer_tools.jar" \
 --outdir ${12}/example_chr22/input_data/HiC/raw \
 --chromosomes 22
+--skip_gzip true
 #Fit HiC data to powerlaw model and extract parameters
 python ${12}/src/compute_powerlaw_fit_from_hic.py \
 --hicDir ${12}/example_chr22/input_data/HiC/raw \

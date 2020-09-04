@@ -132,7 +132,7 @@ cd "${12}"
 # to work since it isn't clear if the printout included all of the details
 # of execution. Mandatory debug
 ###############END NOTE###################
-python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
+sudo python3 "${ABCREPOSITORYSRCDIRECTORY}/makeCandidateRegions.py" \
     --narrowPeak "${OUTPUTDIRECTORY}/Peaks/${INPUTFILENAME}.macs2_peaks.narrowPeak.sorted" \
     --bam "${INPUTBAM}" \
     --outDir "${OUTPUTDIRECTORY}/Peaks/" \

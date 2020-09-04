@@ -20,4 +20,4 @@
     Running regression
     Verifying arguments for 'macs2 callpeak'
 ## Soft-TODOs
-### Test makeCandidateRegions.py now that shebang points to bash instead of sh 
+### Test makeCandidateRegions.py now that shebang points to bash instead of sh

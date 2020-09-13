@@ -48,7 +48,7 @@ cd "${12}"
 # 'skip_gzip true'
 python ${12}/src/juicebox_dump.py \
 --hic_file https://hicfiles.s3.amazonaws.com/hiseq/k562/in-situ/combined_30.hic \
---juicebox "java -jar /alphabet/juicer_tools.jar" \
+--juicebox "java -jar ./alphabet/juicer_tools.jar" \
 --outdir ${12}/example_chr22/input_data/HiC/raw \
 --chromosomes 22
 #Fit HiC data to powerlaw model and extract parameters

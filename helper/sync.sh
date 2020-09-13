@@ -7,3 +7,4 @@ git submodule foreach git push origin master
 git add .
 git commit -m "$1"
 git push --recurse-submodules=on-demand origin master
+git push origin master

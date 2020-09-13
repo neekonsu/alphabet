@@ -19,13 +19,13 @@ func main() {
 	Args := make([]string, 13)
 	defaults := []Question{
 		Question{"Path to input DNase-Seq or ATAC-Seq Bam file",
-			"/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
+			"./alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam"},
 		Question{"Path to general MACS2 output directory",
-			"/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output"},
+			"./alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output"},
 		Question{"Path to ABC reference chromosome size directory",
-			"/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference"},
+			"./alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference"},
 		Question{"Path to ABC python src directory",
-			"/alphabet/ABC-Enhancer-Gene-Prediction/src"},
+			"./alphabet/ABC-Enhancer-Gene-Prediction/src"},
 		Question{"Filename of reference sequence curated (BED)",
 			"RefSeqCurated.170308.bed.CollapsedGeneBounds"},
 		Question{"Filename Consensus Signal Artifact file",
@@ -41,7 +41,7 @@ func main() {
 		Question{"HiC resolution for predict.py",
 			"5000"},
 		Question{"Path to ABC-Enhancer-Gene-Prediction repository (directory)",
-			"/alphabet/ABC-Enhancer-Gene-Prediction"},
+			"./alphabet/ABC-Enhancer-Gene-Prediction"},
 	}
 	// Greet user
 	fmt.Println("\n——————————————————————————————————————————————")

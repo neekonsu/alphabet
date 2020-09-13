@@ -21,7 +21,7 @@ func StageOne(args *[]string) {
 	fmt.Println("~~~~~~~~~~~~~~~~~~~~~")
 	// Spawn shell command for `stage1.sh` script
 	stage1 := &exec.Cmd{
-		Path:   ".stage1.sh",
+		Path:   "/labs/mpsnyder/neekonsu/2020/alphabet/stage1.sh",
 		Args:   (*args),
 		Stdout: os.Stdout,
 		Stderr: os.Stdout,

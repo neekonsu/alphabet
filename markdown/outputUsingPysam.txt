@@ -1,0 +1,189 @@
+Verifying arguments for 'makeCandidateRegions.py'
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/src/makeCandidateRegions.py
+src/makeCandidateRegions.py
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted
+example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam
+example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks/
+example_chr22/ABC_output/Peaks/
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22
+example_chr22/reference/chr22
+——————————————————————
+./reference/wgEncodeHg19ConsensusSignalArtifactRegions.bed
+reference/wgEncodeHg19ConsensusSignalArtifactRegions.bed
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed
+example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.TSS500bp.chr22.bed
+——————————————————————
+Executing awk
+Executing bedtools sort
+Running bamtobed
+Done sorting!
+
+. . . Moving on to stage 2, please wait . . . 
+
+Verifying arguments for run.neighborhoods.py
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/src/run.neighborhoods.py
+src/run.neighborhoods.py
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed
+example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.chr22.bed
+example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.chr22.bed
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam
+example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam,/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam
+example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam,example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/Expression/K562.ENCFF934YBO.TPM.txt
+example_chr22/input_data/Expression/K562.ENCFF934YBO.TPM.txt
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22
+example_chr22/reference/chr22
+——————————————————————
+./reference/UbiquitouslyExpressedGenesHG19.txt
+reference/UbiquitouslyExpressedGenesHG19.txt
+——————————————————————
+K562
+K562
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/
+example_chr22/ABC_output/Neighborhoods/
+——————————————————————
+Namespace(ATAC='', DHS='/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam,/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam', H3K27ac='/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam', candidate_enhancer_regions='/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed', cellType='K562', chrom_sizes='/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22', default_accessibility_feature=None, enhancer_class_override=None, expression_table='/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/../Expression/K562.ENCFF934YBO.TPM.txt', gene_name_annotations='symbol', genes='/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/RefSeqCurated.170308.bed.CollapsedGeneBounds.chr22.bed', genes_for_class_assignment=None, outdir='/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/', primary_gene_identifier='symbol', qnorm=None, skip_gene_counts=False, skip_rpkm_quantile=False, supplementary_features=None, tss_slop_for_class_assignment=500, ubiquitously_expressed_genes='./reference/UbiquitouslyExpressedGenesHG19.txt', use_secondary_counting_method=False)
+Using gene expression from files: ['/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/../Expression/K562.ENCFF934YBO.TPM.txt'] 
+
+Running command: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.TSS1kb.bed > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.TSS1kb.bed.sorted; mv /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.TSS1kb.bed.sorted /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.TSS1kb.bed
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph
+Counting coverage for Genes.H3K27ac.ENCFF384ZZM.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam
+
+
+Feature H3K27ac completed in 0.28225040435791016
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph
+Counting coverage for Genes.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam
+
+
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph
+Counting coverage for Genes.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam
+
+
+Feature DHS completed in 0.9507873058319092
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph
+Counting coverage for Genes.TSS1kb.H3K27ac.ENCFF384ZZM.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.TSS1kb.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam
+
+
+Feature H3K27ac completed in 0.2495861053466797
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph
+Counting coverage for Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.TSS1kb.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam
+
+
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph
+Counting coverage for Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.TSS1kb.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Genes.TSS1kb.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam
+
+
+Feature DHS completed in 0.8792867660522461
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph
+Counting coverage for Enhancers.H3K27ac.ENCFF384ZZM.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.H3K27ac.ENCFF384ZZM.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/ENCFF384ZZM.chr22.bam
+
+
+Feature H3K27ac completed in 0.2650587558746338
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph
+Counting coverage for Enhancers.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep1.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep1.chr22.bam
+
+
+Regenerating /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph
+Counting coverage for Enhancers.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam
+Running: awk 'FNR==NR {x2[$1] = $0; next} $1 in x2 {print x2[$1]}' /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 <(samtools view -H /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam | grep SQ | cut -f 2 | cut -c 4- )  > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order
+Running: bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order -i /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Peaks/wgEncodeUwDnaseK562AlnRep1.chr22.macs2_peaks.narrowPeak.sorted.candidateRegions.bed | bedtools coverage -g /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order -counts -sorted -a stdin -b /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam | awk '{print $1 "\t" $2 "\t" $3 "\t" $NF}'  | bedtools sort -faidx /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/reference/chr22 -i stdin > /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph; rm /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/Enhancers.DHS.wgEncodeUwDnaseK562AlnRep2.chr22.bam.CountReads.bedgraph.temp_sort_order
+BEDTools failed to count file: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/wgEncodeUwDnaseK562AlnRep2.chr22.bam
+
+
+Feature DHS completed in 0.9200930595397949
+Assigning classes to enhancers
+Total enhancers: 3330
+         Promoters: 572
+         Genic: 1553
+         Intergenic: 1205
+Neighborhoods Complete! 
+
+
+. . . Moving on to stage 3, please wait . . . 
+
+Verifying arguments for run.neighborhoods.py
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/src/predict.py
+src/predict.py
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/EnhancerList.txt
+example_chr22/ABC_output/Neighborhoods/EnhancerList.txt
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Neighborhoods/GeneList.txt
+example_chr22/ABC_output/Neighborhoods/GeneList.txt
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/../HiC/raw/
+example_chr22/input_data/HiC/raw/
+——————————————————————
+5000
+5000
+——————————————————————
+K562
+K562
+——————————————————————
+/alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/ABC_output/Predictions/
+example_chr22/ABC_output/Predictions/
+——————————————————————
+reading genes
+reading enhancers
+Making predictions for chromosome: chr22
+Making putative predictions table...
+Using: /alphabet/ABC-Enhancer-Gene-Prediction/example_chr22/input_data/Chromatin/../HiC/raw/chr22/chr22.KRobserved.gz
+Begin HiC
+Loading HiC
+hic.to.sparse: Elapsed time: 0.425431489944458
+HiC Matrix has row sums of 2462.539801718806, making doubly stochastic...
+/alphabet/ABC-Enhancer-Gene-Prediction/src/hic.py:141: RuntimeWarning: invalid value encountered in less
+  norms[norms < kr_cutoff] = np.nan
+/alphabet/ABC-Enhancer-Gene-Prediction/src/hic.py:142: RuntimeWarning: invalid value encountered in greater_equal
+  norms[norms >= kr_cutoff] = 1
+HiC has 1479373 rows after windowing between 0 and 5000000
+process.hic: Elapsed time: 0.6204879283905029
+HiC added to predictions table. Elapsed time: 0.3383336067199707
+HiC Complete
+Completed chromosome: chr22. Elapsed time: 2.0343949794769287 
+
+Writing output files...
+Done.

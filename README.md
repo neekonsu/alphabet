@@ -31,6 +31,7 @@
     Latest packages as listed in 'dependencies.conf'
 
 ## How to run
+![Alphabet demo](./run.GIF)
 ### With git repository
 #### Direct execution
     |$⟩ mkdir -p ./go/src/github.com/neekonsu
